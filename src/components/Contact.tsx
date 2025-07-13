@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
