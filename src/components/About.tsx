@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import heroImage from "../assets/motorbike.webp";
+import { Link } from "react-router-dom";
+import heroImage from "../assets/green2.jpg";
 
 const features = [
   "Advanced lithium-ion battery technology",
@@ -49,7 +50,7 @@ const About: React.FC = () => {
           <div className="bg-white dark:bg-black border-2 border-green rounded-2xl p-10 shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none dark:border-green flex flex-col items-center h-full">
             <h2 className="text-green text-2xl md:text-3xl font-bold mb-4 text-center">Our Mission</h2>
             <p className="text-gray-700 dark:text-white text-center text-lg md:text-xl font-light">
-              To revolutionize urban transportation in Africa by providing cutting-edge, eco-friendly electric motorcycles that combine performance, sustainability, and affordability. We're committed to reducing carbon emissions while empowering communities through innovative mobility solutions.
+            To revolutionize urban and rural mobility in Nigeria by providing affordable, eco-friendly electric vehicles that reduce fuel usage, improve daily commuting, Experience and promote clean transportation for a greener future
             </p>
           </div>
           <div className="bg-white dark:bg-black border-2 border-green rounded-2xl p-10 shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none dark:border-green flex flex-col items-center h-full">
@@ -76,8 +77,8 @@ const About: React.FC = () => {
             </ul>
           </div>
           <div className="flex-1 flex justify-center items-center h-full">
-            <div className="bg-white dark:bg-black border-0.2 border-green rounded-xl shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none p-2 flex items-center justify-center h-72 w-full">
-              <img src={heroImage} alt="Electric Motorcycle" className="w-full h-full object-cover rounded-lg" />
+            <div className=" bg-white dark:bg-black border-0.2 border-green rounded-xl shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none p-1 flex items-center justify-center h-72 w-full">
+              <img src={heroImage} alt="Electric Motorcycle" className=" m-0 w-full h-full object-cover rounded-lg" />
             </div>
           </div>
             </div>
@@ -88,13 +89,19 @@ const About: React.FC = () => {
             Ready to Join the <span className="text-green">Electric</span> Revolution ?
           </h4>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="bg-green hover:bg-green/90 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green">
+            <Link
+              to="/products/gn-model"
+              className="bg-green hover:bg-green/90 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green text-center"
+            >
               Explore products
-            </button>
-            <button className="bg-white dark:bg-black border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10">
+            </Link>
+            <a
+              href="#contact"
+              className="bg-white dark:bg-black border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10 text-center"
+            >
               Contact us
-            </button>
-        </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

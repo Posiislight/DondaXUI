@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -9,60 +9,15 @@ const motorcycles = [
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
     basePrice: 12999,
-    image: "/src/assets/motorbike.webp",
+    image: "/src/assets/black2.jpg",
     specs: {
-      range: "200 miles",
-      topSpeed: "85 mph",
-      power: "15 kW",
-      battery: "72V 50Ah"
+      range: "70-80 KM",
+      topSpeed: "70-75 KM/H",
+      power: "3000W",
+      battery: "72V 35Ah"
     },
-    colors: ["Matte Black", "Electric Blue", "Forest Green", "Sunset Orange"],
-    features: ["Smart Navigation", "Regenerative Braking", "LED Lighting", "Mobile App"]
-  },
-  {
-    id: 2,
-    name: "SPORT MODEL",
-    description: "High-performance electric motorcycle for the ultimate riding experience",
-    basePrice: 15999,
-    image: "/src/assets/motorbike.webp",
-    specs: {
-      range: "180 miles",
-      topSpeed: "120 mph",
-      power: "25 kW",
-      battery: "72V 60Ah"
-    },
-    colors: ["Racing Red", "Carbon Black", "Neon Green", "Chrome Silver"],
-    features: ["Sport Mode", "Advanced Suspension", "Racing Tires", "Performance Dashboard"]
-  },
-  {
-    id: 3,
-    name: "URBAN MODEL",
-    description: "Perfect for city commuting with extended battery life and comfort",
-    basePrice: 10999,
-    image: "/src/assets/motorbike.webp",
-    specs: {
-      range: "150 miles",
-      topSpeed: "65 mph",
-      power: "10 kW",
-      battery: "48V 40Ah"
-    },
-    colors: ["City Gray", "Ocean Blue", "Mint Green", "Warm White"],
-    features: ["Comfort Seat", "Storage Compartment", "City Mode", "Easy Parking"]
-  },
-  {
-    id: 4,
-    name: "ADVENTURE MODEL",
-    description: "Built for long-distance travel with rugged design and durability",
-    basePrice: 18999,
-    image: "/src/assets/motorbike.webp",
-    specs: {
-      range: "300 miles",
-      topSpeed: "95 mph",
-      power: "20 kW",
-      battery: "96V 70Ah"
-    },
-    colors: ["Desert Tan", "Mountain Green", "Storm Gray", "Aurora Blue"],
-    features: ["Off-road Capability", "Extended Range", "Rugged Design", "Adventure Gear"]
+    colors: ["Matte Black", "Forest Green", "Crimson Red"],
+    features: ["Hub Motor for smooth power delivery", "3,000W rated, 5,000W peak power", "≥170N·m maximum torque", "0-45KM/H in 5 seconds"]
   }
 ];
 
@@ -82,6 +37,9 @@ const fadeInUp = {
 };
 
 const Order: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const [selectedMotorcycle, setSelectedMotorcycle] = useState(motorcycles[0]);
   const [selectedColor, setSelectedColor] = useState(motorcycles[0].colors[0]);

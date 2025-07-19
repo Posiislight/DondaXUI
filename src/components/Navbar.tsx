@@ -65,9 +65,6 @@ const Navbar: React.FC = () => {
 
   const productLinks = [
     { to: "/products/gn-model", label: "GN Model", description: "Urban Electric Motorcycle" },
-    { to: "/products/sport-model", label: "Sport Model", description: "High-Performance Electric" },
-    { to: "/products/urban-model", label: "Urban Model", description: "City Commuter Electric" },
-    { to: "/products/adventure-model", label: "Adventure Model", description: "Long-Distance Electric" },
   ];
 
   return (

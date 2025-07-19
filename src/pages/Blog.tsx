@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -7,12 +7,13 @@ const blogPosts = [
     id: 1,
     type: "Product Launch",
     featured: true,
-    title: "DONDA X Model S: Revolutionary Electric Performance",
+    title: "DondaX GN Model: The Future of Urban Electric Mobility",
     description:
-      "Introducing our flagship model with cutting-edge battery technology and unprecedented range capabilities.",
+      "Discover the DondaX GN Model, a durable, city-focused electric motorcycle built for affordability, low maintenance, and daily commuting. Experience the next generation of sustainable transport!",
     date: "6/15/2024",
-    image: "/src/assets/motorbike.webp",
-    button: "Product Launch",
+    image: "/src/assets/black2.jpg",
+    button: "Read Full Story",
+    link: "/products/gn-model"
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const blogPosts = [
     description:
       "Experience the future of motorcycle navigation with our revolutionary AI system that learns your riding patterns",
     date: "6/8/2024",
-    image: "/src/assets/motorbike.webp",
+    image: "/src/assets/green2.jpg",
     button: "Read More",
   },
   {
@@ -31,7 +32,7 @@ const blogPosts = [
     description:
       "We're thrilled to announce that we've reached 10,000 pre-orders, marking a significant milestone in our journey.",
     date: "6/8/2024",
-    image: "/src/assets/motorbike.webp",
+    image: "/src/assets/red2.jpg",
     button: "Read More",
   },
 ];
@@ -52,6 +53,9 @@ const Blog: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // Filter posts by category (except featured)
   const filteredPosts = blogPosts
     .filter((post) => !post.featured)
@@ -157,9 +161,9 @@ const Blog: React.FC = () => {
                 </div>
                 <div className="text-xs sm:text-sm text-gray-400 mb-4">{blogPosts[0].date}</div>
               </div>
-              <button className="bg-green text-black font-semibold px-4 py-2 rounded-full w-max text-xs sm:text-sm">
-                Product Launch
-              </button>
+              <a href={blogPosts[0].link} className="bg-green text-black font-semibold px-4 py-2 rounded-full w-max text-xs sm:text-sm hover:bg-green/80 transition-colors duration-200">
+                {blogPosts[0].button}
+              </a>
             </div>
           </div>
         </motion.div>

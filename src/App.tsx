@@ -8,10 +8,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import Blog from "./pages/Blog";
 import Order from "./pages/order";
 import GNModel from "./pages/products/GNModel";
-import SportModel from "./pages/products/SportModel";
-import UrbanModel from "./pages/products/UrbanModel";
-import AdventureModel from "./pages/products/AdventureModel";
-
+import DondaXGNstory from "./pages/blogStories/DondaXGNstory..tsx";
 function App() {
   return (
     <ThemeProvider>
@@ -29,9 +26,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/order" element={<Order />} />
             <Route path="/products/gn-model" element={<GNModel />} />
-            <Route path="/products/sport-model" element={<SportModel />} />
-            <Route path="/products/urban-model" element={<UrbanModel />} />
-            <Route path="/products/adventure-model" element={<AdventureModel />} />
+            <Route path="/blog/dondax-gn-model" element={<DondaXGNstory />} />
             {/* Add other routes here */}
           </Routes>
           <Footer />

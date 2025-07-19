@@ -1,7 +1,12 @@
 import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Footer: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <footer className="bg-[#263236] text-gray-100 pt-12 pb-4 px-4">
       <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
@@ -12,32 +17,32 @@ const Footer: React.FC = () => {
             Pioneering the future of electric mobility with premium motorcycles that combine cutting-edge technology, sustainable innovation, and uncompromising performance.
           </p>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="hover:text-green transition-colors"><FaFacebookF /></a>
-            <a href="#" className="hover:text-green transition-colors"><FaInstagram /></a>
-            <a href="#" className="hover:text-green transition-colors"><FaTwitter /></a>
-            <a href="#" className="hover:text-green transition-colors"><FaLinkedinIn /></a>
+            
+            <a href="https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr" target="_blank" rel="noopener noreferrer" className="hover:text-green transition-colors"><FaInstagram /></a>
+            
+            
           </div>
         </div>
         {/* Quick Links */}
         <div className="flex-1 min-w-[150px]">
           <div className="font-semibold mb-2">Quick Links</div>
           <ul className="space-y-1 text-sm">
-            <li><a href="#" className="hover:text-green transition-colors">Home</a></li>
-            <li><a href="#" className="hover:text-green transition-colors">Gallery</a></li>
-            <li><a href="#" className="hover:text-green transition-colors">Products</a></li>
-            <li><a href="#" className="hover:text-green transition-colors">Contact</a></li>
+            <li><Link to="/" className="hover:text-green transition-colors">Home</Link></li>
+            {/* Gallery is not implemented, so keep as # or remove if not needed */}
+            <li><a href="/products/gn-model" className="hover:text-green transition-colors">Products</a></li>
+            <li><Link to="/order" className="hover:text-green transition-colors">Order Now</Link></li>
+            <li><a href="#contact" className="hover:text-green transition-colors">Contact</a></li>
           </ul>
         </div>
         {/* Contact Info */}
         <div className="flex-1 min-w-[180px]">
           <div className="font-semibold mb-2">Contact</div>
           <div className="text-sm space-y-1">
-            <div>123 Electric Avenue</div>
-            <div>Tech District, TC</div>
-            <div>12345</div>
-            <div>United States</div>
-            <a href="mailto:contact@dondax.com" className="block text-green hover:underline mt-2">contact@dondax.com</a>
-            <div>0916479500</div>
+            <div>Lagos, Nigeria</div>
+            <a href="mailto:DondaXlimited@icloud.com" className="block text-green hover:underline mt-2">DondaXlimited@icloud.com</a>
+            <a href="mailto:DondaX2025@gmail.com" className="block text-green hover:underline">DondaX2025@gmail.com</a>
+            <a href="tel:+8613265355246" className="block text-green hover:underline mt-2">+8613265355246</a>
+            <a href="tel:+2348037789733" className="block text-green hover:underline">+2348037789733</a>
           </div>
         </div>
         {/* Newsletter/Subscribe */}

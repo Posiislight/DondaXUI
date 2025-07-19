@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "../assets/motorbike.webp";
+import GNModelBlack from "../assets/black2.jpg";
+import GNModelGreen from "../assets/green2.jpg";
+import GNModelRed from "../assets/red5.jpg";
 
 // Static motorcycle data
 const motorcycles = [
@@ -8,30 +12,24 @@ const motorcycles = [
     id: 1,
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
-    image: heroImage,
+    image: GNModelBlack,
     price: "$12,999"
   },
   {
     id: 2,
-    name: "SPORT MODEL",
-    description: "High-performance electric motorcycle for the ultimate riding experience",
-    image: heroImage,
-    price: "$15,999"
+    name: "GN MODEL",
+    description: "Experience the future of electrical mobility with cutting edge technology",
+    image: GNModelGreen,
+    price: "$12,999"
   },
   {
     id: 3,
-    name: "URBAN MODEL",
-    description: "Perfect for city commuting with extended battery life and comfort",
-    image: heroImage,
-    price: "$10,999"
+    name: "GN MODEL",
+    description: "Experience the future of electrical mobility with cutting edge technology",
+    image: GNModelRed,
+    price: "$12,999"
   },
-  {
-    id: 4,
-    name: "ADVENTURE MODEL",
-    description: "Built for long-distance travel with rugged design and durability",
-    image: heroImage,
-    price: "$18,999"
-  }
+ 
 ];
 
 const Hero: React.FC = () => {
@@ -101,19 +99,18 @@ const Hero: React.FC = () => {
               Experience the perfect blend of cutting-edge technology, sustainable power, and unmatched performance with our revolutionary electric motorcycle lineup.
             </motion.p>
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <motion.button 
-                className="bg-green hover:bg-green/90 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Link
+                to="/blog"
+                className="bg-green hover:bg-green/90 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green text-center"
               >
                 Explore Motorcycles
-              </motion.button>
-              <button className="bg-white border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10">
-                Schedule Test Ride
-              </button>
+              </Link>
+              <Link
+                to="/order"
+                className="bg-white border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10 text-center"
+              >
+                Order Now
+              </Link>
             </div>
           </motion.div>
 
@@ -181,7 +178,7 @@ const Hero: React.FC = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      ORDER NOW
+                      <a href="/order">ORDER NOW</a>
                     </motion.button>
                   </motion.div>
                 </motion.div>
