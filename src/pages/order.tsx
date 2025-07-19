@@ -8,7 +8,6 @@ const motorcycles = [
     id: 1,
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
-    basePrice: 12999,
     image: "/src/assets/black2.jpg",
     specs: {
       range: "70-80 KM",
@@ -21,14 +20,9 @@ const motorcycles = [
   }
 ];
 
-// Additional features and their prices
+// Additional features (only Battery Upgrade)
 const additionalFeatures = [
-  { name: "Extended Warranty (3 years)", price: 999 },
-  { name: "Premium Sound System", price: 599 },
-  { name: "Custom Paint Job", price: 1299 },
-  { name: "Performance Upgrade Kit", price: 2499 },
-  { name: "Premium Leather Seat", price: 399 },
-  { name: "Advanced Security System", price: 299 }
+  { name: "Battery Upgrade" }
 ];
 
 const fadeInUp = {
@@ -52,17 +46,11 @@ const Order: React.FC = () => {
     phone: "",
     address: "",
     city: "",
-    zipCode: ""
+    zipCode: "",
   });
+  const [quantity, setQuantity] = useState(1);
 
-  // Calculate total price
-  const basePrice = selectedMotorcycle.basePrice;
-  const featuresPrice = selectedFeatures.reduce((total, featureName) => {
-    const feature = additionalFeatures.find(f => f.name === featureName);
-    return total + (feature?.price || 0);
-  }, 0);
-  const totalPrice = basePrice + featuresPrice;
-
+  // Remove price calculations
   const handleFeatureToggle = (featureName: string) => {
     setSelectedFeatures(prev => 
       prev.includes(featureName) 
@@ -182,7 +170,7 @@ const Order: React.FC = () => {
                         </div>
                       </div>
                       <div className="mt-4 text-2xl font-bold text-green">
-                        ${motorcycle.basePrice.toLocaleString()}
+                        {/* Price intentionally left blank */}
                       </div>
                     </motion.div>
                   ))}
@@ -214,7 +202,19 @@ const Order: React.FC = () => {
                         }`}
                       >
                         <div className="text-center">
-                          <div className="w-8 h-8 rounded-full bg-gray-400 mx-auto mb-2"></div>
+                          <div
+                            className="w-8 h-8 rounded-full mx-auto mb-2 border-2 border-gray-300"
+                            style={{
+                              backgroundColor:
+                                color === "Matte Black"
+                                  ? "#1a1a1a"
+                                  : color === "Forest Green"
+                                  ? "#228B22"
+                                  : color === "Crimson Red"
+                                  ? "#DC143C"
+                                  : "#ccc"
+                            }}
+                          ></div>
                           <span className="text-sm font-medium">{color}</span>
                         </div>
                       </button>
@@ -237,7 +237,6 @@ const Order: React.FC = () => {
                           />
                           <span className="ml-3 font-medium">{feature.name}</span>
                         </div>
-                        <span className="text-green font-semibold">+${feature.price.toLocaleString()}</span>
                       </label>
                     ))}
                   </div>
@@ -288,6 +287,16 @@ const Order: React.FC = () => {
                         type="tel"
                         value={customerInfo.phone}
                         onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
+                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-green focus:border-transparent"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Quantity</label>
+                      <input
+                        type="number"
+                        min={1}
+                        value={quantity}
+                        onChange={e => setQuantity(Math.max(1, Number(e.target.value)))}
                         className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-green focus:border-transparent"
                       />
                     </div>
@@ -368,7 +377,7 @@ const Order: React.FC = () => {
                     Color: {selectedColor}
                   </p>
                   <div className="text-2xl font-bold text-green">
-                    ${selectedMotorcycle.basePrice.toLocaleString()}
+                    {/* Price intentionally left blank */}
                   </div>
                 </div>
 
@@ -376,24 +385,16 @@ const Order: React.FC = () => {
                   <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
                     <h4 className="font-semibold mb-2">Additional Features</h4>
                     <div className="space-y-1">
-                      {selectedFeatures.map((featureName) => {
-                        const feature = additionalFeatures.find(f => f.name === featureName);
-                        return (
-                          <div key={featureName} className="flex justify-between text-sm">
-                            <span>{featureName}</span>
-                            <span className="text-green">+${feature?.price.toLocaleString()}</span>
-                          </div>
-                        );
-                      })}
+                      {selectedFeatures.map((featureName) => (
+                        <div key={featureName} className="flex justify-between text-sm">
+                          <span>{featureName}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
 
                 <div className="pt-4">
-                  <div className="flex justify-between text-lg font-bold">
-                    <span>Total</span>
-                    <span className="text-green">${totalPrice.toLocaleString()}</span>
-                  </div>
                 </div>
               </div>
             </div>

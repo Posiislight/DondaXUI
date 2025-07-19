@@ -13,21 +13,18 @@ const motorcycles = [
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
     image: GNModelBlack,
-    price: "$12,999"
   },
   {
     id: 2,
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
     image: GNModelGreen,
-    price: "$12,999"
   },
   {
     id: 3,
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
     image: GNModelRed,
-    price: "$12,999"
   },
  
 ];
@@ -172,7 +169,6 @@ const Hero: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3, ease: "easeInOut" }}
                   >
-                    <span className="text-green font-extrabold text-lg sm:text-xl">{currentMotorcycle.price}</span>
                     <motion.button 
                       className="bg-green hover:bg-green/90 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-xs sm:text-sm shadow-md shadow-green-100/60 border-2 border-green"
                       whileHover={{ scale: 1.05 }}

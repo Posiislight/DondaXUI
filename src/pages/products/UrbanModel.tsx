@@ -53,9 +53,6 @@ const UrbanModel: React.FC = () => {
             Perfect for city commuting with extended battery life and comfort. 
             Designed for daily urban transportation with practical features and ease of use.
           </p>
-          <div className="text-3xl font-bold text-green mt-4">
-            $10,999
-          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -195,7 +192,6 @@ const UrbanModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">GN Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Urban electric motorcycle</p>
-              <div className="text-green font-bold">$12,999</div>
             </Link>
             <Link
               to="/products/sport-model"
@@ -203,7 +199,6 @@ const UrbanModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">Sport Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">High-performance electric</p>
-              <div className="text-green font-bold">$15,999</div>
             </Link>
             <Link
               to="/products/adventure-model"
@@ -211,7 +206,6 @@ const UrbanModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">Adventure Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Built for long-distance travel</p>
-              <div className="text-green font-bold">$18,999</div>
             </Link>
           </div>
         </motion.div>

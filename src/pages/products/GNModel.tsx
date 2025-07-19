@@ -65,14 +65,13 @@ const GNModel: React.FC = () => {
 
   // Show only the 8 most important specs for users
   const specs = [
-    { label: "Range", value: "70-80 KM", icon: "🚗" },
-    { label: "Max Speed", value: "70-75 KM/H", icon: "⚡" },
-    { label: "Motor Type", value: "Hub Motor", icon: "🛞" },
-    { label: "Rated Power", value: "3000W", icon: "🔋" },
+    { label: "Range", value: "70-100 KM", icon: "🚗" },
+    { label: "Top Speed", value: "70-75 KM/H", icon: "⚡" },
     { label: "Peak Power", value: "5000W", icon: "🔋" },
-    { label: "Battery", value: "72V 35Ah", icon: "🔋" },
-    { label: "Maximum Laden Mass", value: "150KG", icon: "⚖️" },
-    { label: "Brake System", value: "Front:Φ220 Disc/Rear:Φ220 Disc", icon: "🛑" },
+    { label: "Battery", value: "72V/35Ah", icon: "🔋" },
+    { label: "Charge Time", value: "2-4 hours", icon: "🔌" },
+    { label: "Driving System", value: "3 gears", icon: "⚙️" },
+    { label: "Meter Display", value: "Bluetooth mode with speaker", icon: "📱" },
   ];
 
   const features = [
@@ -117,9 +116,6 @@ const GNModel: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             DondaX GN is a durable, city-focused electric motorcycle built for affordability and low maintenance, ideal for delivery and daily commuting.
           </p>
-          <div className="text-3xl font-bold text-green mt-4">
-            $12,999
-          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -180,14 +176,9 @@ const GNModel: React.FC = () => {
               <h3 className="text-2xl font-bold mb-4">About the GN Model</h3>
               <div className="space-y-4 text-gray-700 dark:text-gray-300">
                 <p>
-                  The DondaX GN Model is engineered for urban and delivery riders who demand reliability, efficiency, and performance. Powered by a robust 3,000W hub motor (5,000W peak), it delivers strong acceleration (0-45KM/H in just 5 seconds) and a maximum torque of over 170N·m.
+                This motorcycle offers an impressive minimum range of 70km on a single charge
                 </p>
-                <p>
-                  With a 72V 35Ah battery, you get a practical range of 70-80KM per charge. The GN Model features a 3-gear driving system, 13° climbing capacity, and a ground clearance of 200mm for versatile city and light off-road use. Safety is ensured with front and rear Φ220 disc brakes and all-around lighting.
-                </p>
-                <p>
-                  The advanced meter display supports Bluetooth mode with a built-in speaker, keeping you connected on the go. With a 150KG max load, 1300mm wheelbase, and 780mm seat height, the GN Model is comfortable for a wide range of riders. Dimensions: 2000×850×1080mm.
-                </p>
+                
               </div>
             </div>
           </motion.div>

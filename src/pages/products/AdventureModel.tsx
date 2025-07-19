@@ -53,9 +53,6 @@ const AdventureModel: React.FC = () => {
             Built for long-distance travel with rugged design and durability. 
             Conquer any terrain with confidence and explore the world without limits.
           </p>
-          <div className="text-3xl font-bold text-green mt-4">
-            $18,999
-          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -194,7 +191,6 @@ const AdventureModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">GN Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Urban electric motorcycle</p>
-              <div className="text-green font-bold">$12,999</div>
             </Link>
             <Link
               to="/products/sport-model"
@@ -202,7 +198,6 @@ const AdventureModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">Sport Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">High-performance electric</p>
-              <div className="text-green font-bold">$15,999</div>
             </Link>
             <Link
               to="/products/urban-model"
@@ -210,7 +205,6 @@ const AdventureModel: React.FC = () => {
             >
               <h4 className="text-xl font-bold mb-2 group-hover:text-green transition-colors">Urban Model</h4>
               <p className="text-gray-600 dark:text-gray-300 mb-4">Perfect for city commuting</p>
-              <div className="text-green font-bold">$10,999</div>
             </Link>
           </div>
         </motion.div>

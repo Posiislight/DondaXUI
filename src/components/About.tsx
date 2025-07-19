@@ -41,7 +41,7 @@ const About: React.FC = () => {
             </motion.h1>
           </div>
           <p className=" text-lg text-center  text-gray-700 dark:text-gray-200 max-w-4xl mt-2">
-            Pioneering the future of sustainable urban mobility through innovative electric motorcycle technology, designed and manufactured with pride in Nigeria.
+          DondaX is leading the movement towards a cleaner, smarter, and more affordable way to move.  We are a proudly Nigerian electric mobility company, focused on redefining transportation with cutting-edge electric motorcycles that are designed for the streets and communities of Africa. At DondaX, we believe transportation should be more than just movement — it should be empowering, sustainable, and accessible to everyone.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ const About: React.FC = () => {
           <div className="bg-white dark:bg-black border-2 border-green rounded-2xl p-10 shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none dark:border-green flex flex-col items-center h-full">
             <h2 className="text-green text-2xl md:text-3xl font-bold mb-4 text-center">Our Mission</h2>
             <p className="text-gray-700 dark:text-white text-center text-lg md:text-xl font-light">
-            To revolutionize urban and rural mobility in Nigeria by providing affordable, eco-friendly electric vehicles that reduce fuel usage, improve daily commuting, Experience and promote clean transportation for a greener future
+            To reduce transportation costs, cut down harmful emissions, and create new economic opportunities through clean energy solutions. Every DondaX ride is not just a journey — it’s a statement of freedom, progress, and a greener future.
             </p>
           </div>
           <div className="bg-white dark:bg-black border-2 border-green rounded-2xl p-10 shadow-[0_8px_40px_0_rgba(34,255,0,0.10)] dark:shadow-none dark:border-green flex flex-col items-center h-full">
