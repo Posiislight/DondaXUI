@@ -287,7 +287,7 @@ const Order: React.FC = () => {
                       <PhoneInput
                         defaultCountry="NG"
                         value={customerInfo.phone}
-                        onChange={(phone) => setCustomerInfo(prev => ({...prev, phone: phone}))}
+                        onChange={phone => setCustomerInfo(prev => ({ ...prev, phone: phone || "" }))}
                         international
                         countryCallingCodeEditable={false}
                         className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:ring-2 focus:ring-green focus:border-transparent"
