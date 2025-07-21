@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
                 to="/order"
                 className="bg-white border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10 text-center"
               >
-                Order Now
+                Place Order Request
               </Link>
             </div>
           </motion.div>
@@ -174,7 +174,7 @@ const Hero: React.FC = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <a href="/order">ORDER NOW</a>
+                      <a href="/order">PLACE ORDER REQUEST</a>
                     </motion.button>
                   </motion.div>
                 </motion.div>

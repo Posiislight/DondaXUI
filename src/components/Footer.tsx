@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             <li><Link to="/" className="hover:text-green transition-colors">Home</Link></li>
             {/* Gallery is not implemented, so keep as # or remove if not needed */}
             <li><a href="/products/gn-model" className="hover:text-green transition-colors">Products</a></li>
-            <li><Link to="/order" className="hover:text-green transition-colors">Order Now</Link></li>
+                            <li><Link to="/order" className="hover:text-green transition-colors">Place Order Request</Link></li>
             <li><a href="#contact" className="hover:text-green transition-colors">Contact</a></li>
           </ul>
         </div>

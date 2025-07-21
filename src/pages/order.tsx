@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 // Motorcycle data
 const motorcycles = [
@@ -46,9 +48,8 @@ const Order: React.FC = () => {
     phone: "",
     address: "",
     city: "",
-    zipCode: "",
+    zipCode: ""
   });
-  const [quantity, setQuantity] = useState(1);
 
   // Remove price calculations
   const handleFeatureToggle = (featureName: string) => {
@@ -283,21 +284,13 @@ const Order: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Phone</label>
-                      <input
-                        type="tel"
+                      <PhoneInput
+                        defaultCountry="NG"
                         value={customerInfo.phone}
-                        onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-green focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Quantity</label>
-                      <input
-                        type="number"
-                        min={1}
-                        value={quantity}
-                        onChange={e => setQuantity(Math.max(1, Number(e.target.value)))}
-                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 focus:ring-2 focus:ring-green focus:border-transparent"
+                        onChange={(phone) => setCustomerInfo(prev => ({...prev, phone: phone}))}
+                        international
+                        countryCallingCodeEditable={false}
+                        className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white focus:ring-2 focus:ring-green focus:border-transparent"
                       />
                     </div>
                     <div className="md:col-span-2">

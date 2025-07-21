@@ -18,3 +18,87 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom styles for react-phone-number-input */
+.PhoneInput {
+  width: 100%;
+}
+
+.PhoneInputInput {
+  width: 100% !important;
+  padding: 12px !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+  outline: none !important;
+}
+
+.PhoneInputInput:focus {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+}
+
+.PhoneInputCountry {
+  margin-right: 8px !important;
+}
+
+/* Dark mode support */
+.dark .PhoneInputInput {
+  background-color: #374151 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.dark .PhoneInputInput:focus {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2) !important;
+}
+
+/* Add this to src/index.css */
+
+/* Style for each country option in the dropdown */
+.PhoneInputCountryOption {
+  transition: background-color 0.2s ease-in-out;
+  background-color: #000000; /* Adds a smooth transition */
+}
+
+/* Style for the country option when you hover over it */
+.PhoneInputCountryOption:hover {
+  background-color: #f0fdf4 !important; /* A light green background on hover */
+}
+
+/* Dark mode hover style */
+.dark .PhoneInputCountryOption:hover {
+  background-color: #22c55e !important; /* A solid green background on hover in dark mode */
+  color: #000000 !important; /* Black text for better contrast */
+}
+
+/* Dark mode for the dropdown menu */
+.dark .PhoneInputCountrySelect {
+  background-color: #2d3748 !important; /* Dark background for the dropdown */
+}
+
+.dark .PhoneInputCountrySelect-arrow {
+  border-top-color: #ffffff !important; /* White arrow */
+}
+
+.dark .PhoneInputCountrySelectList {
+  background-color: #2d3748 !important; /* Dark background for the dropdown list */
+  border: 1px solid #4a5568 !important;
+  color: #ffffff !important; /* White text for country names */
+}
+
+.dark .PhoneInputCountryOption {
+  color: #ffffff !important;
+}
+
+.dark .PhoneInputCountryOption--isFocused {
+  background-color: #4a5568 !important;
+}
+
+.dark .PhoneInputCountryOption:hover {
+  background-color: #22c55e !important;
+  color: #000000 !important;
+}
