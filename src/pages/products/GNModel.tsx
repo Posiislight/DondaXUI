@@ -161,7 +161,7 @@ const GNModel: React.FC = () => {
                     onClick={() => setSelectedColor(color)}
                     aria-label={`Select ${color}`}
                   >
-                    <div
+                    <div 
                       className="w-8 h-8 rounded-full border-2 border-gray-300"
                       style={{ backgroundColor: color === 'Matte Black' ? '#1a1a1a' : color === 'Forest Green' ? '#228B22' : '#DC143C' }}
                     ></div>

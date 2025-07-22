@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-
+import ClipLoader from 'react-spinners/ClipLoader';
 // Motorcycle data
 const motorcycles = [
   {
@@ -37,6 +37,7 @@ const Order: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
   const navigate = useNavigate();
+  const [loading,setLoading] = useState(false);
   const [selectedMotorcycle, setSelectedMotorcycle] = useState(motorcycles[0]);
   const [selectedColor, setSelectedColor] = useState(motorcycles[0].colors[0]);
   const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
@@ -72,14 +73,52 @@ const Order: React.FC = () => {
     }
   };
 
-  const handleSubmitOrder = () => {
-    // Here you would typically send the order to your backend
-    alert("Order submitted successfully! We'll contact you soon.");
-    navigate("/");
+  const handleSubmitOrder = async () => {
+    setLoading(true)
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    const bookingData = {
+      first_name: customerInfo.firstName,
+      last_name: customerInfo.lastName,
+      email: customerInfo.email,
+      phone: customerInfo.phone,
+      address: customerInfo.address,
+      city: customerInfo.city,
+      zip_code: customerInfo.zipCode,
+      motorcycle_model: selectedMotorcycle.name,
+      color: selectedColor,
+      quantity: 1, // Assuming a default quantity for now
+      frequency: "One-time", // Assuming a default frequency for now
+      additional_features: selectedFeatures,
+    };
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/bookings/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData),
+      });
+      if (!response.ok) throw new Error('Failed to submit booking');
+      // Optionally handle success (show message, redirect, etc)
+      alert('Order submitted successfully!');
+      navigate('/');
+    } catch (error) {
+      alert('There was an error submitting your order.');
+      console.error(error);
+    }
+    finally{
+      setLoading(false)
+    }
   };
 
   return (
+    
     <div className="mt-12 min-h-screen bg-gray-100 dark:bg-black text-gray-900 dark:text-white">
+      { loading && (
+         <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex items-center justify-center">
+         <ClipLoader loading={true} size={60} color="#ffffff" />
+       </div>
+      )
+      }
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div
@@ -161,7 +200,7 @@ const Order: React.FC = () => {
                           <span>Range:</span>
                           <span className="font-semibold">{motorcycle.specs.range}</span>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex justify-between">1
                           <span>Top Speed:</span>
                           <span className="font-semibold">{motorcycle.specs.topSpeed}</span>
                         </div>
