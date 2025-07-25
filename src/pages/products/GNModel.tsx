@@ -240,9 +240,7 @@ const GNModel: React.FC = () => {
               >
                 Place Order Request
               </Link>
-              <button className="flex-1 border-2 border-green text-green font-bold py-4 px-8 rounded-lg hover:bg-green hover:text-black transition-colors duration-300">
-                Schedule Test Ride
-              </button>
+              
             </div>
           </motion.div>
         </div>
