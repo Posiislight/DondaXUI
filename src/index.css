@@ -102,3 +102,26 @@ html {
   background-color: #22c55e !important;
   color: #000000 !important;
 }
+
+/* Base Toast container */
+.Toastify__toast {
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Light mode toast (default background) */
+.Toastify__toast-theme--light {
+  /* Keep default background */
+  color: #000;
+}
+
+/* Dark mode toast */
+.Toastify__toast-theme--dark {
+  background: #000000; /* Black background */
+  color: #ffffff;
+}
+
+/* Green progress bar (both themes) */
+.Toastify__progress-bar {
+  background: #77ff00 !important; /* Tailwind's green-500 */
+}

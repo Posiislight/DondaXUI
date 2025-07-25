@@ -9,10 +9,12 @@ import Blog from "./pages/Blog";
 import Order from "./pages/order";
 import GNModel from "./pages/products/GNModel";
 import DondaXGNstory from "./pages/blogStories/DondaXGNstory..tsx";
+import { ToastContainer, toast } from "react-toastify";
 function App() {
   return (
     <ThemeProvider>
       <Router>
+      <ToastContainer />
         <div className="App">
           <Navbar />
           <Routes>

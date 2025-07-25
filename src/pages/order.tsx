@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { ToastContainer, toast } from "react-toastify";
 // Motorcycle data
 const motorcycles = [
   {
@@ -72,8 +73,34 @@ const Order: React.FC = () => {
       setCurrentStep(currentStep - 1);
     }
   };
-
+  const validateForm = () => {
+    const {
+      firstName,
+      lastName,
+      email,
+      phone,
+      address,
+      city,
+      zipCode
+    } = customerInfo;
+  
+    if (!firstName.trim()) return "First name is required.";
+    if (!lastName.trim()) return "Last name is required.";
+    if (!email.trim()) return "Email is required.";
+    if (!phone.trim()) return "Phone number is required.";
+    if (!address.trim()) return "Address is required.";
+    if (!city.trim()) return "City is required.";
+    if (!zipCode.trim()) return "ZIP Code is required.";
+  
+    return null; // No errors
+  };
+  
   const handleSubmitOrder = async () => {
+    const error = validateForm();
+  if (error) {
+    toast(`${error}`);
+    return;
+  }
     setLoading(true)
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const bookingData = {
@@ -102,7 +129,8 @@ const Order: React.FC = () => {
       alert('Order submitted successfully!');
       navigate('/');
     } catch (error) {
-      alert('There was an error submitting your order.');
+      // alert('There was an error submitting your order.');
+      toast(`There was an error submitting your order`)
       console.error(error);
     }
     finally{
@@ -113,6 +141,7 @@ const Order: React.FC = () => {
   return (
     
     <div className="mt-12 min-h-screen bg-gray-100 dark:bg-black text-gray-900 dark:text-white">
+      <ToastContainer/>
       { loading && (
          <div className="fixed inset-0 z-[9999] bg-black bg-opacity-50 flex items-center justify-center">
          <ClipLoader loading={true} size={60} color="#ffffff" />

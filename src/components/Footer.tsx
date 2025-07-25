@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ClipLoader from 'react-spinners/ClipLoader';
 import type { ReactFormState } from "react-dom/client";
 
+
 const Footer: React.FC = () => {
   const [email,setEmail]=useState<string>();
   const[loading,isLoading]=useState(false);
