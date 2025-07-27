@@ -5,13 +5,14 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { ToastContainer, toast } from "react-toastify";
+import black2 from "../assets/black2.jpg";
 // Motorcycle data
 const motorcycles = [
   {
     id: 1,
     name: "GN MODEL",
     description: "Experience the future of electrical mobility with cutting edge technology",
-    image: "/src/assets/black2.jpg",
+    image: black2,
     specs: {
       range: "70-80 KM",
       topSpeed: "70-75 KM/H",

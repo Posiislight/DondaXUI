@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import black2 from "../assets/black2.jpg";
+import dondaxlogowithtext from "../assets/dondaxlogowithtext.jpg"
 
 const blogPosts = [
   {
@@ -13,29 +14,29 @@ const blogPosts = [
       "Discover the DondaX GN Model, a durable, city-focused electric motorcycle built for affordability, low maintenance, and daily commuting. Experience the next generation of sustainable transport!",
     date: "6/15/2024",
     image: black2,
-    button: "Read Full Story",
+    button: "See the model",
     link: "/products/gn-model"
   },
   {
     id: 2,
     type: "Events",
-    title: "New AI-Powered Smart Navigation System",
+    title: "DondaX Event Launch",
     description:
-      "Experience the future of motorcycle navigation with our revolutionary AI system that learns your riding patterns",
+      "The Future of Nigerian Transportation",
     date: "6/8/2024",
-    image: "/src/assets/green2.jpg",
+    image: dondaxlogowithtext,
     button: "Read More",
   },
-  {
-    id: 3,
-    type: "Company News",
-    title: "DONDA X Reaches 10,000 Pre-Orders Milestone",
-    description:
-      "We're thrilled to announce that we've reached 10,000 pre-orders, marking a significant milestone in our journey.",
-    date: "6/8/2024",
-    image: "/src/assets/red2.jpg",
-    button: "Read More",
-  },
+  //{
+  //  id: 3,
+  //  type: "Company News",
+   // title: "DONDA X Starts sales in nigeria",
+   // description:
+   //   "We're thrilled to announce that we've reached 10,000 pre-orders, marking a significant milestone in our journey.",
+  //  date: "6/8/2024",
+  //  image: "/src/assets/red2.jpg",
+  //  button: "Read More",
+  //},
 ];
 
 const categories = [
