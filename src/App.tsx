@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-      <ToastContainer />
+      
         <div className="App">
           <Navbar />
           <Routes>

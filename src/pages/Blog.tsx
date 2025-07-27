@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import black2 from "../assets/black2.jpg";
 
 const blogPosts = [
   {
@@ -11,7 +12,7 @@ const blogPosts = [
     description:
       "Discover the DondaX GN Model, a durable, city-focused electric motorcycle built for affordability, low maintenance, and daily commuting. Experience the next generation of sustainable transport!",
     date: "6/15/2024",
-    image: "/src/assets/black2.jpg",
+    image: black2,
     button: "Read Full Story",
     link: "/products/gn-model"
   },
