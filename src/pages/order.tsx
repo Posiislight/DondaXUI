@@ -127,7 +127,7 @@ const Order: React.FC = () => {
       });
       if (!response.ok) throw new Error('Failed to submit booking');
       // Optionally handle success (show message, redirect, etc)
-      toast('Order submitted successfully!');
+      alert('Order submitted successfully!');
       navigate('/');
     } catch (error) {
       // alert('There was an error submitting your order.');
