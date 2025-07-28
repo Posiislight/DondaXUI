@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import ToggleDarkModeButton from "./ToggleDarkModeButton";
 import { useTheme } from "../context/ThemeContext";
-
+import DondaXlogo from "../assets/dondaxlogo.jpg";
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
@@ -72,6 +72,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
+        
           <h1 className="text-lg sm:text-xl lg:text-2xl font-thin" style={{ color: "#77ff00", fontFamily: "'Inria Sans', sans-serif" }}>
             DondaX
           </h1>
