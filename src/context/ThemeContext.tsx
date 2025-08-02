@@ -12,7 +12,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Check localStorage on initial load
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('darkMode');
-      return saved ? JSON.parse(saved) : false;
+      return saved ? JSON.parse(saved) : true;
+
     }
     return false;
   });

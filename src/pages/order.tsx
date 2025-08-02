@@ -230,7 +230,7 @@ const Order: React.FC = () => {
                           <span>Range:</span>
                           <span className="font-semibold">{motorcycle.specs.range}</span>
                         </div>
-                        <div className="flex justify-between">1
+                        <div className="flex justify-between">
                           <span>Top Speed:</span>
                           <span className="font-semibold">{motorcycle.specs.topSpeed}</span>
                         </div>

@@ -73,11 +73,11 @@ const Contact: React.FC = () => {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 bg-gray-200 dark:bg-[#4a5757] rounded-md px-3 sm:px-4 py-2 sm:py-3 transition-colors duration-300">
                 <FaEnvelope className="text-lg sm:text-xl text-gray-600 dark:text-gray-200" />
-                <span className="text-gray-800 dark:text-white text-sm sm:text-base"><a href="mailto:DondaXlimited@icloud.com" className="underline hover:text-green">DondaXlimited@icloud.com</a>,<br /><a href="mailto:DondaX2025@gmail.com" className="hover:text-green underline">DondaX2025@gmail.com</a> </span>
+                <span className="text-gray-800 dark:text-white text-sm sm:text-base"><a href="mailto:care@dondaxlimited.com" className="underline hover:text-green">care@dondaxlimited.com</a>,<br /><a href="mailto:enquiry@dondaxlimited.com" className="hover:text-green underline">enquiry@dondaxlimited.com</a> </span>
               </div>
               <div className="flex items-center gap-3 bg-gray-200 dark:bg-[#4a5757] rounded-md px-3 sm:px-4 py-2 sm:py-3 transition-colors duration-300">
                 <FaPhone className="text-lg sm:text-xl text-gray-600 dark:text-gray-200" />
-                <span className="text-gray-800 dark:text-white text-sm sm:text-base"><a href="tel:+8613265355246" className="underline hover:text-green">+8613265355246</a>,<a href="tel:+2348037789733" className="hover:text-green underline">+2348037789733</a>  </span>
+                <span className="text-gray-800 dark:text-white text-sm sm:text-base"><a href="tel:+8613265355246" className="underline hover:text-green">+8613265355246</a><br /><a href="tel:+2348037789733" className="hover:text-green underline">+2348037789733</a>  </span>
               </div>
             </div>
             <hr className="my-2 sm:my-3 border-gray-300 dark:border-gray-500" />

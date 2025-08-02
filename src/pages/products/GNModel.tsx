@@ -76,13 +76,13 @@ const GNModel: React.FC = () => {
 
   const features = [
     "Hub Motor for smooth power delivery",
-    "3,000W rated, 5,000W peak power",
+    "3,000W rated  5,000W peak power",
     "≥170N·m maximum torque",
     "0-45KM/H in 5 seconds",
     "72V 35Ah battery",
     "200mm ground clearance",
-    "Front:1.6-18/Rear:2.75-16 wheels",
-    "Front:2.75-18/Rear:2.75-16TL tyres",
+    "Front: 1.6-18/Rear: 2.75-16 wheels",
+    "Front: 2.75-18/Rear: 2.75-16TL tyres",
     "Front & Rear Φ220 Disc brakes",
     "3-gear driving system",
     "13° climbing capacity",

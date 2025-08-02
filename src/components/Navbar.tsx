@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
   const navLinks = [
     { to: "hero", label: "Home", isLink: false },
     { to: "about", label: "About", isLink: false },
-    { to: "/blog", label: "GNHub", isLink: true },
+    { to: "/blog", label: "Blog", isLink: true },
     { to: "/order", label: "Order", isLink: true },
     { to: "contact", label: "Contact", isLink: false },
   ];

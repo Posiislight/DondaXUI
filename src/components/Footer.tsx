@@ -75,8 +75,8 @@ const Footer: React.FC = () => {
           <div className="font-semibold mb-2">Contact</div>
           <div className="text-sm space-y-1">
             <div>Lagos, Nigeria</div>
-            <a href="mailto:DondaXlimited@icloud.com" className="block text-green hover:underline mt-2">DondaXlimited@icloud.com</a>
-            <a href="mailto:DondaX2025@gmail.com" className="block text-green hover:underline">DondaX2025@gmail.com</a>
+            <a href="mailto:care@dondaxlimited.com" className="block text-green hover:underline mt-2">care@dondaxlimited.com</a>
+            <a href="mailto:enquiry@dondaxlimited.com" className="block text-green hover:underline">enquiry@dondaxlimited.com</a>
             <a href="tel:+8613265355246" className="block text-green hover:underline mt-2">+8613265355246</a>
             <a href="tel:+2348037789733" className="block text-green hover:underline">+2348037789733</a>
           </div>
