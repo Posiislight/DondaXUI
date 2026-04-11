@@ -103,7 +103,6 @@ const Order: React.FC = () => {
     return;
   }
     setLoading(true)
-    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
     const bookingData = {
       first_name: customerInfo.firstName,
       last_name: customerInfo.lastName,
@@ -120,7 +119,7 @@ const Order: React.FC = () => {
     };
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/bookings/`, {
+      const response = await fetch('/api/sendemail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData),

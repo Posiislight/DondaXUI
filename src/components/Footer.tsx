@@ -17,11 +17,10 @@ const Footer: React.FC = () => {
   const EmailSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     isLoading(true);
-    const BASE_API_URL = import.meta.env.VITE_API_BASE_URL
     try{
-      const response = await fetch(`{BASE_API_URL}/api/email/`,{
+      const response = await fetch('/api/email',{
         method:'POST',
-        headers:{'Content-type':'Application/json'},
+        headers:{'Content-Type':'application/json'},
         body: JSON.stringify({email})
       })
       alert('Email submitted successfully')

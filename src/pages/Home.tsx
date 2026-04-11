@@ -5,9 +5,8 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { useEffect } from "react";
 const Home = () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/ping/`)
+    fetch('/api/ping')
     .then(response => response.json())
     .then(data => {
       console.log(data);
