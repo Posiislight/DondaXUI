@@ -71,7 +71,7 @@ export default async function handler(req, res) {
     `;
 
     const { data, error } = await resend.emails.send({
-      from: "DondaX <onboarding@resend.dev>", // Replace with your verified domain and sender email e.g. "orders@dondaxlimited.com"
+      from: "DondaX <enquiry@dondaxlimited.com>", // Replace with your verified domain and sender email e.g. "orders@dondaxlimited.com"
       to: "enquiry@dondaxlimited.com",
       subject: `New Order from ${first_name} ${last_name}`,
       html: htmlContent,
