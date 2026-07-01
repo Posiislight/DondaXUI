@@ -29,8 +29,8 @@ const Contact: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Lagos, Nigeria coordinates
-  const position: [number, number] = [6.5244, 3.3792];
+  // Abuja, Nigeria coordinates
+  const position: [number, number] = [9.084710, 7.414080];
 
   return (
     <section id="contact" className="min-h-screen w-full bg-gray-100 dark:bg-black flex flex-col items-center py-8 sm:py-10 px-2 sm:px-4 transition-colors duration-300">
@@ -59,7 +59,10 @@ const Contact: React.FC = () => {
                 />
                 <Marker position={position as [number, number]} icon={markerIcon as any}>
                   <Popup>
-                    DondaX HQ<br />Lagos, Nigeria
+                    Iyemi Plaza<br />
+                    Plot 12345 Road, Gudu<br />
+                    Abuja 900104, Nigeria<br />
+                    <a href="https://maps.apple.com/place?address=Abuja,%20Federal%20Capital%20Territory,%20Nigeria&coordinate=9.084710,7.414080&name=Iyemi%20Plaza,%20Plot%2012345%20Road,%20Gudu,%20Abuja%20900104,%20Federal%20Capital%20Territory&map=explore" target="_blank" rel="noopener noreferrer" className="text-green hover:underline mt-1 inline-block font-medium">Open in Maps</a>
                   </Popup>
                 </Marker>
               </MapContainer>

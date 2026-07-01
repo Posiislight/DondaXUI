@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
         <div className="flex-1 min-w-[180px]">
           <div className="font-semibold mb-2">Contact</div>
           <div className="text-sm space-y-1">
-            <div>Lagos, Nigeria</div>
+            <a href="https://maps.apple.com/place?address=Abuja,%20Federal%20Capital%20Territory,%20Nigeria&coordinate=9.084710,7.414080&name=Iyemi%20Plaza,%20Plot%2012345%20Road,%20Gudu,%20Abuja%20900104,%20Federal%20Capital%20Territory&map=explore" target="_blank" rel="noopener noreferrer" className="block hover:text-green transition-colors">Iyemi Plaza, Plot 12345 Road,<br/>Gudu, Abuja 900104</a>
             <a href="mailto:care@dondaxlimited.com" className="block text-green hover:underline mt-2">care@dondaxlimited.com</a>
             <a href="mailto:enquiry@dondaxlimited.com" className="block text-green hover:underline">enquiry@dondaxlimited.com</a>
             <a href="tel:+8613265355246" className="block text-green hover:underline mt-2">+8613265355246</a>
