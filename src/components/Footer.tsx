@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -52,10 +52,9 @@ const Footer: React.FC = () => {
             Pioneering the future of electric mobility with premium motorcycles that combine cutting-edge technology, sustainable innovation, and uncompromising performance.
           </p>
           <div className="flex gap-4 mt-2">
-            
             <a href="https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr" target="_blank" rel="noopener noreferrer" className="hover:text-green transition-colors"><FaInstagram /></a>
-            
-            
+            <a href="https://www.facebook.com/share/1JRYVsTagv/" target="_blank" rel="noopener noreferrer" className="hover:text-green transition-colors"><FaFacebookF /></a>
+            <a href="https://www.tiktok.com/@dondaxltd?_r=1&_t=ZS-97gAPSB5Hld" target="_blank" rel="noopener noreferrer" className="hover:text-green transition-colors"><FaTiktok /></a>
           </div>
         </div>
         {/* Quick Links */}

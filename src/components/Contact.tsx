@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaTiktok } from "react-icons/fa";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -84,9 +84,15 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <hr className="my-2 sm:my-3 border-gray-300 dark:border-gray-500" />
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
-              <a href="https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr" className="flex items-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-base">
-                <FaInstagram className="text-base sm:text-lg" /> Instagram
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+              <a href="https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">
+                <FaInstagram className="text-base sm:text-lg shrink-0" /> <span className="hidden sm:inline">Instagram</span>
+              </a>
+              <a href="https://www.facebook.com/share/1JRYVsTagv/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">
+                <FaFacebook className="text-base sm:text-lg shrink-0" /> <span className="hidden sm:inline">Facebook</span>
+              </a>
+              <a href="https://www.tiktok.com/@dondaxltd?_r=1&_t=ZS-97gAPSB5Hld" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">
+                <FaTiktok className="text-base sm:text-lg shrink-0" /> <span className="hidden sm:inline">TikTok</span>
               </a>
             </div>
           </div>
