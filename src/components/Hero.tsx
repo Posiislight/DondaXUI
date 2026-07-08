@@ -5,6 +5,7 @@ import heroImage from "../assets/motorbike.webp";
 import GNModelBlack from "../assets/black2.jpg";
 import GNModelGreen from "../assets/green2.jpg";
 import GNModelRed from "../assets/red5.jpg";
+import { DottedSurface } from "./ui/dotted-surface";
 
 // Static motorcycle data
 const motorcycles = [
@@ -55,8 +56,9 @@ const Hero: React.FC = () => {
   const currentMotorcycle = motorcycles[currentIndex];
 
   return (
-    <section id="hero" className=" mt-10 relative min-h-screen flex items-center justify-center bg-[#f8fbff] dark:bg-black transition-colors duration-300 px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-      <div className="max-w-7xl w-full mx-auto">
+    <section id="hero" className=" mt-10 relative min-h-screen flex items-center justify-center bg-[#f8fbff] dark:bg-black transition-colors duration-300 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 overflow-hidden">
+      <DottedSurface className="absolute inset-0 z-0 opacity-60 dark:opacity-80 pointer-events-none" />
+      <div className="max-w-7xl w-full mx-auto relative z-10">
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
@@ -98,13 +100,13 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Link
                 to="/blog"
-                className="bg-green hover:bg-green/90 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green text-center"
+                className="bg-green hover:bg-green/90 text-black font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md shadow-green-100/60 border-2 border-green text-center"
               >
                 Explore Motorcycles
               </Link>
               <Link
                 to="/order"
-                className="bg-white border-2 border-green text-green font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10 text-center"
+                className="bg-transparent border-2 border-green text-black dark:text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-base shadow-md hover:bg-green/10 text-center"
               >
                 Place Order Request
               </Link>
@@ -170,7 +172,7 @@ const Hero: React.FC = () => {
                     transition={{ duration: 0.5, delay: 0.3, ease: "easeInOut" }}
                   >
                     <motion.button 
-                      className="bg-green hover:bg-green/90 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300 text-xs sm:text-sm shadow-md shadow-green-100/60 border-2 border-green"
+                      className="bg-green hover:bg-green/90 text-black font-bold py-2 px-6 rounded-full transition-colors duration-300 text-xs sm:text-sm shadow-md shadow-green-100/60 border-2 border-green"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
