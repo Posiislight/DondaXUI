@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import DondaxLayout from './DondaxLayout';
 import Reveal from './Reveal';
-import { ASSET, COLOURS } from './data';
+import { ASSET, SRCSET, COLOURS } from './data';
 
 const MODELS = [
   {
     slug: 'gn-model',
     name: 'GN Model',
-    image: ASSET('gn-urban.jpg'),
+    image: ASSET('gn-urban.webp'),
+    imageSet: SRCSET('gn-urban'),
     blurb: 'Perfect for city commuting with smart connectivity features.',
     specs: ['100km range', '120km/h', '2-3h charge'],
   },
@@ -36,7 +37,7 @@ export default function Products() {
               className="dx-card dx-colour-card"
               style={{ display: 'flex', flexDirection: 'column' }}
             >
-              <img src={m.image} alt={m.name} style={{ width: '100%', height: 240, objectFit: 'cover' }} />
+              <img src={m.image} srcSet={m.imageSet} sizes="(max-width: 720px) 100vw, 640px" decoding="async" alt={m.name} style={{ width: '100%', height: 240, objectFit: 'cover' }} />
               <div style={{ padding: 26, display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <h3 style={{ font: '700 20px var(--dx-sora)', margin: '0 0 8px' }}>{m.name}</h3>
                 <p style={{ font: '500 14px/1.6 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 0 18px', flex: 1 }}>{m.blurb}</p>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import DondaxLayout, { DondaxNav } from './DondaxLayout';
 import Reveal from './Reveal';
-import { ASSET, STAT_STRIP, COLOURS } from './data';
+import { ASSET, SRCSET, STAT_STRIP, COLOURS } from './data';
 
 const SECTION = { maxWidth: 1400, margin: '0 auto' } as const;
 
@@ -36,6 +36,7 @@ function Hero() {
     <div style={{ position: 'relative', height: '88vh', minHeight: 600, overflow: 'hidden' }}>
       <video
         src={ASSET('hero-video.mp4')}
+        poster={ASSET('hero-poster.webp')}
         autoPlay
         muted
         loop
@@ -130,7 +131,7 @@ function FeaturedModel() {
       className="dx-section dx-grid"
     >
       <Reveal className="dx-media">
-        <img src={ASSET('gn-urban.jpg')} alt="DondaX GN Model" style={{ width: '100%', height: 'clamp(240px,60vw,420px)', objectFit: 'cover' }} />
+        <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 640px" loading="lazy" decoding="async" alt="DondaX GN Model" style={{ width: '100%', height: 'clamp(240px,60vw,420px)', objectFit: 'cover' }} />
         <div className="dx-shine" />
       </Reveal>
       <Reveal delay={0.12}>
@@ -160,7 +161,7 @@ function Colours() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(280px,100%),1fr))', gap: 24 }}>
         {COLOURS.map((c, i) => (
           <Reveal key={c.key} delay={i * 0.1} className="dx-card dx-colour-card">
-            <img src={c.image} alt={`GN Model in ${c.name}`} style={{ width: '100%', height: 250, objectFit: 'cover' }} />
+            <img src={c.image} srcSet={c.imageSet} sizes="(max-width: 720px) 100vw, 440px" loading="lazy" decoding="async" alt={`GN Model in ${c.name}`} style={{ width: '100%', height: 250, objectFit: 'cover' }} />
             <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 12 }}>
               <span
                 style={{
@@ -231,7 +232,7 @@ function About() {
           </div>
         </Reveal>
         <Reveal delay={0.12} className="dx-media">
-          <img src={ASSET('gn-urban.jpg')} alt="DondaX electric motorcycle" style={{ width: '100%', height: 'clamp(220px,55vw,380px)', objectFit: 'cover' }} />
+          <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 640px" loading="lazy" decoding="async" alt="DondaX electric motorcycle" style={{ width: '100%', height: 'clamp(220px,55vw,380px)', objectFit: 'cover' }} />
           <div className="dx-shine" style={{ animationDelay: '2s' }} />
         </Reveal>
       </div>

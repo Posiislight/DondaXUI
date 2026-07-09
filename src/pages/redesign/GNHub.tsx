@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DondaxLayout from './DondaxLayout';
 import Reveal from './Reveal';
-import { ASSET, STORIES, STORY_FILTERS, type Story } from './data';
+import { ASSET, SRCSET, STORIES, STORY_FILTERS, type Story } from './data';
 
 function StoryView({ story, onBack }: { story: Story; onBack: () => void }) {
   return (
@@ -22,7 +22,7 @@ function StoryView({ story, onBack }: { story: Story; onBack: () => void }) {
         <h1 style={{ font: '800 clamp(30px,4vw,46px)/1.15 var(--dx-sora)', margin: '0 0 32px', letterSpacing: -0.5 }}>{story.title}</h1>
       </div>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 56px' }} className="dx-section">
-        <img src={story.image} alt={story.title} style={{ width: '100%', height: 'clamp(220px,55vw,440px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }} />
+        <img src={story.image} srcSet={story.imageSet} sizes="(max-width: 720px) 100vw, 990px" decoding="async" alt={story.title} style={{ width: '100%', height: 'clamp(220px,55vw,440px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }} />
       </div>
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '40px 56px 96px' }} className="dx-section">
         {story.body.map((para, i) => (
@@ -93,7 +93,7 @@ export default function GNHub() {
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '24px 56px 40px' }} className="dx-section">
         <button onClick={() => setOpenId(featured.id)} className="dx-featured" style={{ width: '100%', textAlign: 'left', cursor: 'pointer', padding: 0, color: 'inherit', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 22, overflow: 'hidden' }}>
           <div style={{ position: 'relative', minHeight: 'clamp(240px,60vw,420px)' }}>
-            <img src={featured.image} alt={featured.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src={featured.image} srcSet={featured.imageSet} sizes="(max-width: 720px) 100vw, 640px" decoding="async" alt={featured.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
             <span style={{ position: 'absolute', top: 22, left: 22, background: 'var(--dx-accent)', color: 'var(--dx-accent-ink)', font: '700 12px var(--dx-manrope)', padding: '7px 14px', borderRadius: 999 }}>Featured</span>
           </div>
           <div style={{ padding: 'clamp(24px,5vw,48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -122,7 +122,7 @@ export default function GNHub() {
                 className="dx-update-card"
                 style={{ textAlign: 'left', cursor: 'pointer', padding: 0, color: 'inherit', width: '100%', background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 18, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
               >
-                <img src={post.image} alt={post.title} style={{ width: '100%', height: 190, objectFit: 'cover' }} />
+                <img src={post.image} srcSet={post.imageSet} sizes="(max-width: 720px) 100vw, 420px" loading="lazy" decoding="async" alt={post.title} style={{ width: '100%', height: 190, objectFit: 'cover' }} />
                 <div style={{ padding: 24, display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
                     <span style={{ background: 'oklch(80% 0.19 128 / .14)', color: 'var(--dx-accent)', font: '700 11px var(--dx-manrope)', padding: '5px 12px', borderRadius: 999 }}>{post.category}</span>
@@ -145,10 +145,10 @@ export default function GNHub() {
           <span style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>On the streets, in every colour</span>
         </div>
         <div className="dx-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gridAutoRows: 'clamp(110px,26vw,180px)', gap: 16 }}>
-          <video src={ASSET('hero-video.mp4')} autoPlay muted loop playsInline style={{ gridColumn: 'span 2', gridRow: 'span 2', width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
-          <img src={ASSET('gn-green.jpg')} alt="GN Model, Electric Green, studio side profile" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
-          <img src={ASSET('gn-red.jpg')} alt="GN Model, Signal Red, three-quarter front" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
-          <img src={ASSET('gn-urban.jpg')} alt="GN Model, Midnight Black, on an Abuja street" style={{ gridColumn: 'span 2', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
+          <video src={ASSET('hero-video.mp4')} poster={ASSET('hero-poster.webp')} autoPlay muted loop playsInline style={{ gridColumn: 'span 2', gridRow: 'span 2', width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
+          <img src={ASSET('gn-green.webp')} srcSet={SRCSET('gn-green')} sizes="(max-width: 720px) 50vw, 330px" loading="lazy" decoding="async" alt="GN Model, Electric Green, studio side profile" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
+          <img src={ASSET('gn-red.webp')} srcSet={SRCSET('gn-red')} sizes="(max-width: 720px) 50vw, 330px" loading="lazy" decoding="async" alt="GN Model, Signal Red, three-quarter front" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
+          <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 660px" loading="lazy" decoding="async" alt="GN Model, Midnight Black, on an Abuja street" style={{ gridColumn: 'span 2', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
         </div>
       </div>
 

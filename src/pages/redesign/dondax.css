@@ -280,6 +280,10 @@
   .dx-form-grid { grid-template-columns: 1fr !important; }
   .dx-form-grid > .dx-input { grid-column: auto !important; }
   .dx-nav .dx-btn--sm { padding: 10px 16px; font-size: 13px; }
+}
+
+@media (max-width: 400px) {
+  .dx-nav .dx-btn--sm { display: none; }
   .dx-btn, .dx-btn-outline { padding: 14px 24px; font-size: 14px; }
 }
 

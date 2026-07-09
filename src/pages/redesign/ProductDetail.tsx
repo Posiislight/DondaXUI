@@ -21,6 +21,9 @@ export default function ProductDetail() {
           <div>
             <img
               src={selected.image}
+              srcSet={selected.imageSet}
+              sizes="(max-width: 720px) 100vw, 640px"
+              decoding="async"
               alt={`DondaX GN Model — ${selected.name}`}
               style={{ width: '100%', height: 'clamp(280px,80vw,480px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }}
             />
@@ -36,7 +39,7 @@ export default function ProductDetail() {
                     overflow: 'hidden', transition: 'border-color .25s',
                   }}
                 >
-                  <img src={c.image} alt={`GN Model ${c.name}`} style={{ width: '100%', height: 'clamp(72px,22vw,120px)', objectFit: 'cover', display: 'block' }} />
+                  <img src={c.image} srcSet={c.imageSet} sizes="220px" loading="lazy" decoding="async" alt={`GN Model ${c.name}`} style={{ width: '100%', height: 'clamp(72px,22vw,120px)', objectFit: 'cover', display: 'block' }} />
                 </button>
               ))}
             </div>

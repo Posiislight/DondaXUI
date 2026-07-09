@@ -23,7 +23,7 @@ const MenuIcon = ({ open }: { open: boolean }) => (
 function Brand() {
   return (
     <Link to="/" className="dx-nav__brand">
-      <img src={ASSET('logo.jpg')} alt="DondaX" />
+      <img src={ASSET('logo.webp')} alt="DondaX" />
       <span>
         DONDA<span className="dx-accent">X</span>
       </span>
@@ -76,7 +76,7 @@ export function DondaxFooter() {
   return (
     <footer className="dx-footer">
       <div className="dx-footer__brand">
-        <img src={ASSET('logo.jpg')} alt="DondaX" />
+        <img src={ASSET('logo.webp')} alt="DondaX" />
         DONDA<span className="dx-accent">X</span>
       </div>
       <div className="dx-footer__copy">© 2026 DondaX Limited. All rights reserved.</div>

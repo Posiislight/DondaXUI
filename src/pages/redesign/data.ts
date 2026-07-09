@@ -3,17 +3,22 @@
 
 export const ASSET = (name: string) => `/redesign/${name}`;
 
+/** srcSet string for photos that ship in 640w + 1280w WebP variants. */
+export const SRCSET = (base: string) =>
+  `${ASSET(`${base}-640.webp`)} 640w, ${ASSET(`${base}.webp`)} 1280w`;
+
 export interface Colour {
   key: 'black' | 'green' | 'red';
   name: string;
   swatch: string;
   image: string;
+  imageSet: string;
 }
 
 export const COLOURS: Colour[] = [
-  { key: 'black', name: 'Midnight Black', swatch: '#141414', image: ASSET('gn-urban.jpg') },
-  { key: 'green', name: 'Electric Green', swatch: '#3fa02c', image: ASSET('gn-green.jpg') },
-  { key: 'red', name: 'Signal Red', swatch: '#cd2318', image: ASSET('gn-red.jpg') },
+  { key: 'black', name: 'Midnight Black', swatch: '#141414', image: ASSET('gn-urban.webp'), imageSet: SRCSET('gn-urban') },
+  { key: 'green', name: 'Electric Green', swatch: '#3fa02c', image: ASSET('gn-green.webp'), imageSet: SRCSET('gn-green') },
+  { key: 'red', name: 'Signal Red', swatch: '#cd2318', image: ASSET('gn-red.webp'), imageSet: SRCSET('gn-red') },
 ];
 
 export const SPECS = [
@@ -43,6 +48,7 @@ export interface Story {
   category: 'Product Launch' | 'Company News' | 'Events';
   date: string;
   image: string;
+  imageSet: string;
   title: string;
   excerpt: string;
   body: string[];
@@ -53,7 +59,8 @@ export const STORIES: Story[] = [
     id: 0,
     category: 'Product Launch',
     date: 'July 2026',
-    image: ASSET('gn-urban.jpg'),
+    image: ASSET('gn-urban.webp'),
+    imageSet: SRCSET('gn-urban'),
     title: 'GN Model: Revolutionary Electric Performance',
     excerpt:
       'Our flagship model brings cutting-edge lithium-ion battery technology and smart connectivity to the streets of Africa.',
@@ -68,7 +75,8 @@ export const STORIES: Story[] = [
     id: 1,
     category: 'Product Launch',
     date: 'Jul 2026',
-    image: ASSET('gn-green.jpg'),
+    image: ASSET('gn-green.webp'),
+    imageSet: SRCSET('gn-green'),
     title: 'Smart Navigation Comes to GN Model',
     excerpt:
       'An over-the-air update brings IoT-connected route planning and live battery insights to every rider.',
@@ -83,7 +91,8 @@ export const STORIES: Story[] = [
     id: 2,
     category: 'Company News',
     date: 'Jun 2026',
-    image: ASSET('logo-text.jpg'),
+    image: ASSET('logo-text.webp'),
+    imageSet: SRCSET('logo-text'),
     title: 'DondaX Reaches 10,000 Pre-Orders',
     excerpt: 'A major milestone as riders across Nigeria commit to the electric future.',
     body: [
@@ -97,7 +106,8 @@ export const STORIES: Story[] = [
     id: 3,
     category: 'Events',
     date: 'Jun 2026',
-    image: ASSET('gn-urban.jpg'),
+    image: ASSET('gn-urban.webp'),
+    imageSet: SRCSET('gn-urban'),
     title: 'Test Rides Land in Abuja',
     excerpt: 'Book a slot at our Gwarinpa HQ and feel the torque of instant electric acceleration.',
     body: [

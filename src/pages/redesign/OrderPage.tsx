@@ -68,7 +68,7 @@ export default function OrderPage() {
           <aside className="dx-order-summary" style={{ background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 18, padding: 28, position: 'sticky', top: 24 }}>
             <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 20px' }}>Order Summary</h2>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 24 }}>
-              <img src={colour.image} alt="GN Model" style={{ width: 64, height: 64, flex: 'none', objectFit: 'cover', borderRadius: 10 }} />
+              <img src={colour.image} srcSet={colour.imageSet} sizes="64px" loading="lazy" decoding="async" alt="GN Model" style={{ width: 64, height: 64, flex: 'none', objectFit: 'cover', borderRadius: 10 }} />
               <div>
                 <div style={{ font: '700 15px var(--dx-sora)' }}>GN Model</div>
                 <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>{colour.name}</div>
