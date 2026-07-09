@@ -14,14 +14,14 @@ export default function OrderPage() {
   return (
     <DondaxLayout active="/order">
       <form onSubmit={onSubmit} style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 56px 96px' }} className="dx-section">
-        <h1 style={{ font: '800 36px var(--dx-sora)', margin: '0 0 40px' }}>Place Order Request</h1>
+        <h1 style={{ font: '800 clamp(28px,5.5vw,36px) var(--dx-sora)', margin: '0 0 40px' }}>Place Order Request</h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 40, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 40, alignItems: 'start' }}>
           {/* form fields */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             <section>
               <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 18px' }}>Personal Information</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div className="dx-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <input required placeholder="Full Name" className="dx-input" style={{ gridColumn: 'span 2' }} />
                 <input required type="email" placeholder="Email" className="dx-input" />
                 <input required placeholder="Phone Number" className="dx-input" />
@@ -56,7 +56,7 @@ export default function OrderPage() {
 
             <section>
               <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 18px' }}>Delivery Details</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+              <div className="dx-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <input required placeholder="Delivery Address" className="dx-input" style={{ gridColumn: 'span 2' }} />
                 <input required placeholder="City" className="dx-input" />
                 <input required placeholder="State" className="dx-input" />

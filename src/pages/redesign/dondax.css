@@ -265,6 +265,22 @@
 @media (max-width: 720px) {
   .dx-gallery { grid-template-columns: repeat(2, 1fr) !important; }
   .dx-order-summary { position: static !important; }
+  .dx-grid { gap: 32px !important; }
+  .dx-stats { grid-template-columns: 1fr !important; }
+  .dx-stats .dx-stat {
+    border-right: none !important;
+    border-bottom: 1px solid var(--dx-border);
+    padding: 20px 24px !important;
+  }
+  .dx-stats .dx-stat:last-child { border-bottom: none; }
+  .dx-stats .dx-stat__value { font-size: 30px !important; }
+}
+
+@media (max-width: 560px) {
+  .dx-form-grid { grid-template-columns: 1fr !important; }
+  .dx-form-grid > .dx-input { grid-column: auto !important; }
+  .dx-nav .dx-btn--sm { padding: 10px 16px; font-size: 13px; }
+  .dx-btn, .dx-btn-outline { padding: 14px 24px; font-size: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

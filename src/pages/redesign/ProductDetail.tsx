@@ -16,13 +16,13 @@ export default function ProductDetail() {
           ← Back to Motors
         </Link>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 64, alignItems: 'start' }}>
+        <div className="dx-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 64, alignItems: 'start' }}>
           {/* gallery */}
           <div>
             <img
               src={selected.image}
               alt={`DondaX GN Model — ${selected.name}`}
-              style={{ width: '100%', height: 480, objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }}
+              style={{ width: '100%', height: 'clamp(280px,80vw,480px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }}
             />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, marginTop: 14 }}>
               {COLOURS.map((c) => (
@@ -36,7 +36,7 @@ export default function ProductDetail() {
                     overflow: 'hidden', transition: 'border-color .25s',
                   }}
                 >
-                  <img src={c.image} alt={`GN Model ${c.name}`} style={{ width: '100%', height: 120, objectFit: 'cover', display: 'block' }} />
+                  <img src={c.image} alt={`GN Model ${c.name}`} style={{ width: '100%', height: 'clamp(72px,22vw,120px)', objectFit: 'cover', display: 'block' }} />
                 </button>
               ))}
             </div>
@@ -45,7 +45,7 @@ export default function ProductDetail() {
           {/* info */}
           <div>
             <div className="dx-eyebrow" style={{ marginBottom: 14 }}>GN Series</div>
-            <h1 style={{ font: '800 44px var(--dx-sora)', margin: '0 0 16px' }}>GN Model</h1>
+            <h1 style={{ font: '800 clamp(32px,6vw,44px) var(--dx-sora)', margin: '0 0 16px' }}>GN Model</h1>
             <p style={{ font: '500 16px/1.7 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 0 28px' }}>
               Built for the city. Smart connectivity, advanced lithium-ion battery technology, and a design that turns
               heads — the everyday electric motorcycle for African cities.

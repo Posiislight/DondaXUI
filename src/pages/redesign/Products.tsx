@@ -20,7 +20,7 @@ export default function Products() {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24, marginBottom: 40 }}>
           <Reveal>
             <div className="dx-eyebrow" style={{ marginBottom: 14 }}>Our Lineup</div>
-            <h1 style={{ font: '800 44px var(--dx-sora)' }}>DondaX Motors</h1>
+            <h1 style={{ font: '800 clamp(32px,6vw,44px) var(--dx-sora)' }}>DondaX Motors</h1>
           </Reveal>
           <Reveal delay={0.1} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <span style={{ background: 'var(--dx-accent)', color: '#fff', font: '700 13px var(--dx-manrope)', padding: '10px 20px', borderRadius: 999 }}>All</span>
@@ -28,7 +28,7 @@ export default function Products() {
           </Reveal>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: 28 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(340px,100%),1fr))', gap: 28 }}>
           {MODELS.map((m, i) => (
             <Reveal
               key={m.slug}

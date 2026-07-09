@@ -22,7 +22,7 @@ function StoryView({ story, onBack }: { story: Story; onBack: () => void }) {
         <h1 style={{ font: '800 clamp(30px,4vw,46px)/1.15 var(--dx-sora)', margin: '0 0 32px', letterSpacing: -0.5 }}>{story.title}</h1>
       </div>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 56px' }} className="dx-section">
-        <img src={story.image} alt={story.title} style={{ width: '100%', height: 440, objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }} />
+        <img src={story.image} alt={story.title} style={{ width: '100%', height: 'clamp(220px,55vw,440px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }} />
       </div>
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '40px 56px 96px' }} className="dx-section">
         {story.body.map((para, i) => (
@@ -91,17 +91,17 @@ export default function GNHub() {
 
       {/* featured story */}
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '24px 56px 40px' }} className="dx-section">
-        <button onClick={() => setOpenId(featured.id)} className="dx-featured" style={{ width: '100%', textAlign: 'left', cursor: 'pointer', padding: 0, color: 'inherit', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 22, overflow: 'hidden' }}>
-          <div style={{ position: 'relative', minHeight: 420 }}>
+        <button onClick={() => setOpenId(featured.id)} className="dx-featured" style={{ width: '100%', textAlign: 'left', cursor: 'pointer', padding: 0, color: 'inherit', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 22, overflow: 'hidden' }}>
+          <div style={{ position: 'relative', minHeight: 'clamp(240px,60vw,420px)' }}>
             <img src={featured.image} alt={featured.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
             <span style={{ position: 'absolute', top: 22, left: 22, background: 'var(--dx-accent)', color: 'var(--dx-accent-ink)', font: '700 12px var(--dx-manrope)', padding: '7px 14px', borderRadius: 999 }}>Featured</span>
           </div>
-          <div style={{ padding: 48, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ padding: 'clamp(24px,5vw,48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
               <span style={{ background: 'oklch(80% 0.19 128 / .14)', color: 'var(--dx-accent)', font: '700 12px var(--dx-manrope)', padding: '6px 14px', borderRadius: 999 }}>{featured.category}</span>
               <span style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-faint)' }}>{featured.date}</span>
             </div>
-            <h2 style={{ font: '700 32px/1.15 var(--dx-sora)', margin: '0 0 18px' }}>{featured.title}</h2>
+            <h2 style={{ font: '700 clamp(24px,4.5vw,32px)/1.15 var(--dx-sora)', margin: '0 0 18px' }}>{featured.title}</h2>
             <p style={{ font: '500 15px/1.75 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 0 28px' }}>{featured.excerpt}</p>
             <span className="dx-btn dx-btn--sm" style={{ alignSelf: 'flex-start' }}>Read the Story</span>
           </div>
@@ -111,7 +111,7 @@ export default function GNHub() {
       {/* latest updates */}
       <div style={{ maxWidth: 1400, margin: '0 auto', padding: '32px 56px 24px' }} className="dx-section">
         <h3 style={{ font: '700 24px var(--dx-sora)', margin: '0 0 28px' }}>Latest <span className="dx-accent">Updates</span></h3>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 28 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 28 }}>
           {feed.length === 0 && (
             <p style={{ font: '500 15px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>No updates in this category yet.</p>
           )}
@@ -144,7 +144,7 @@ export default function GNHub() {
           <h3 style={{ font: '700 24px var(--dx-sora)' }}>Media <span className="dx-accent">Gallery</span></h3>
           <span style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>On the streets, in every colour</span>
         </div>
-        <div className="dx-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gridAutoRows: 180, gap: 16 }}>
+        <div className="dx-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gridAutoRows: 'clamp(110px,26vw,180px)', gap: 16 }}>
           <video src={ASSET('hero-video.mp4')} autoPlay muted loop playsInline style={{ gridColumn: 'span 2', gridRow: 'span 2', width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
           <img src={ASSET('gn-green.jpg')} alt="GN Model, Electric Green, studio side profile" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
           <img src={ASSET('gn-red.jpg')} alt="GN Model, Signal Red, three-quarter front" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
@@ -154,7 +154,7 @@ export default function GNHub() {
 
       {/* newsletter */}
       <div style={{ maxWidth: 1400, margin: '48px auto 0', padding: '0 56px' }} className="dx-section">
-        <div style={{ background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 22, padding: 56, textAlign: 'center' }}>
+        <div style={{ background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 22, padding: 'clamp(24px,6vw,56px)', textAlign: 'center' }}>
           <h3 style={{ font: '800 clamp(26px,3vw,38px) var(--dx-sora)', margin: '0 0 14px' }}>Stay in the <span className="dx-accent">Loop</span></h3>
           <p style={{ font: '500 16px/1.6 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 auto 28px', maxWidth: 480 }}>
             Get launch news, ride events, and GN stories delivered straight to your inbox.

@@ -52,11 +52,11 @@ function Hero() {
           pointerEvents: 'none',
         }}
       />
-      <div style={{ position: 'relative', zIndex: 2 }}>
+      <div style={{ position: 'relative', zIndex: 3 }}>
         <DondaxNav active="/" />
       </div>
 
-      <div style={{ position: 'absolute', bottom: 64, left: 0, right: 0, padding: '0 56px', zIndex: 2 }}>
+      <div className="dx-section" style={{ position: 'absolute', bottom: 64, left: 0, right: 0, padding: '0 56px', zIndex: 2 }}>
         <Reveal>
           <div className="dx-eyebrow" style={{ marginBottom: 16 }}>
             Electric Motorcycles · Designed in Nigeria
@@ -88,6 +88,7 @@ function Hero() {
 function StatStrip() {
   return (
     <div
+      className="dx-stats"
       style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3,1fr)',
@@ -101,12 +102,13 @@ function StatStrip() {
         <Reveal
           key={s.label}
           delay={i * 0.1}
+          className="dx-stat"
           style={{
             padding: '36px 56px',
             borderRight: i < STAT_STRIP.length - 1 ? '1px solid var(--dx-border)' : undefined,
           }}
         >
-          <div style={{ font: '800 40px var(--dx-sora)', color: 'var(--dx-accent)' }}>{s.value}</div>
+          <div className="dx-stat__value" style={{ font: '800 40px var(--dx-sora)', color: 'var(--dx-accent)' }}>{s.value}</div>
           <div style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)', marginTop: 6 }}>{s.label}</div>
         </Reveal>
       ))}
@@ -119,16 +121,16 @@ function FeaturedModel() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))',
+        gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))',
         gap: 64,
         padding: '96px 56px',
         alignItems: 'center',
         ...SECTION,
       }}
-      className="dx-section"
+      className="dx-section dx-grid"
     >
       <Reveal className="dx-media">
-        <img src={ASSET('gn-urban.jpg')} alt="DondaX GN Model" style={{ width: '100%', height: 420, objectFit: 'cover' }} />
+        <img src={ASSET('gn-urban.jpg')} alt="DondaX GN Model" style={{ width: '100%', height: 'clamp(240px,60vw,420px)', objectFit: 'cover' }} />
         <div className="dx-shine" />
       </Reveal>
       <Reveal delay={0.12}>
@@ -155,7 +157,7 @@ function Colours() {
           Pick your <span className="dx-accent">colour</span>
         </h2>
       </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(280px,100%),1fr))', gap: 24 }}>
         {COLOURS.map((c, i) => (
           <Reveal key={c.key} delay={i * 0.1} className="dx-card dx-colour-card">
             <img src={c.image} alt={`GN Model in ${c.name}`} style={{ width: '100%', height: 250, objectFit: 'cover' }} />
@@ -196,7 +198,7 @@ function About() {
         </p>
       </Reveal>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 28, marginBottom: 80 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 28, marginBottom: 80 }}>
         {[
           {
             title: 'Our Mission',
@@ -207,16 +209,16 @@ function About() {
             body: 'To revolutionize urban transportation in Africa by providing cutting-edge, eco-friendly electric motorcycles that combine performance, sustainability, and affordability. We’re committed to reducing carbon emissions while empowering communities through innovative mobility solutions.',
           },
         ].map((card, i) => (
-          <Reveal key={card.title} delay={i * 0.12} className="dx-card dx-card--glass dx-about-card" style={{ padding: 40 }}>
+          <Reveal key={card.title} delay={i * 0.12} className="dx-card dx-card--glass dx-about-card" style={{ padding: 'clamp(24px,5vw,40px)' }}>
             <h3 style={{ font: '700 24px var(--dx-sora)', margin: '0 0 16px', color: 'var(--dx-accent)' }}>{card.title}</h3>
             <p style={{ font: '500 15px/1.75 var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>{card.body}</p>
           </Reveal>
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 64, alignItems: 'center' }}>
+      <div className="dx-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 64, alignItems: 'center' }}>
         <Reveal>
-          <h3 style={{ font: '700 36px var(--dx-sora)', margin: '0 0 32px' }}>
+          <h3 style={{ font: '700 clamp(28px,5vw,36px) var(--dx-sora)', margin: '0 0 32px' }}>
             Building the <span className="dx-accent">Future</span>
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -229,7 +231,7 @@ function About() {
           </div>
         </Reveal>
         <Reveal delay={0.12} className="dx-media">
-          <img src={ASSET('gn-urban.jpg')} alt="DondaX electric motorcycle" style={{ width: '100%', height: 380, objectFit: 'cover' }} />
+          <img src={ASSET('gn-urban.jpg')} alt="DondaX electric motorcycle" style={{ width: '100%', height: 'clamp(220px,55vw,380px)', objectFit: 'cover' }} />
           <div className="dx-shine" style={{ animationDelay: '2s' }} />
         </Reveal>
       </div>
@@ -292,10 +294,10 @@ function Contact() {
         </h2>
       </Reveal>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 28 }}>
-        <Reveal className="dx-card dx-card--glass" style={{ padding: 32 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 28 }}>
+        <Reveal className="dx-card dx-card--glass" style={{ padding: 'clamp(20px,4vw,32px)' }}>
           <h3 style={{ font: '700 20px var(--dx-sora)', margin: '0 0 20px' }}>Our Location</h3>
-          <div style={{ position: 'relative', width: '100%', height: 360, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--dx-border)' }}>
+          <div style={{ position: 'relative', width: '100%', height: 'clamp(260px,60vw,360px)', borderRadius: 14, overflow: 'hidden', border: '1px solid var(--dx-border)' }}>
             <iframe
               title="DondaX HQ — Gwarinpa, Abuja"
               src="https://www.openstreetmap.org/export/embed.html?bbox=7.385%2C9.085%2C7.455%2C9.145&layer=mapnik&marker=9.111%2C7.417"
@@ -340,7 +342,7 @@ function Contact() {
               </div>
             </div>
           ))}
-          <div style={{ display: 'flex', gap: 12, marginTop: 4 }}>
+          <div style={{ display: 'flex', gap: 12, marginTop: 4, flexWrap: 'wrap' }}>
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
