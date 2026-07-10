@@ -36,6 +36,16 @@
   box-sizing: border-box;
 }
 
+/* background videos: never show the big iOS/WebKit play glyph when the
+   OS blocks autoplay (Low Power Mode) — the poster frame shows instead */
+.dondax-root video::-webkit-media-controls-start-playback-button,
+.dondax-root video::-webkit-media-controls-overlay-play-button,
+.dondax-root video::-webkit-media-controls {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
 .dondax-root a { color: var(--dx-accent); text-decoration: none; }
 .dondax-root a:hover { color: var(--dx-accent-hi); }
 .dondax-root h1, .dondax-root h2, .dondax-root h3, .dondax-root h4 { font-family: var(--dx-sora); margin: 0; }

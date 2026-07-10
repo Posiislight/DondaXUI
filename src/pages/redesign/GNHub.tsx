@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DondaxLayout from './DondaxLayout';
+import DondaxLayout, { AutoplayVideo } from './DondaxLayout';
 import Reveal from './Reveal';
 import { ASSET, SRCSET, STORIES, STORY_FILTERS, type Story } from './data';
 
@@ -145,7 +145,7 @@ export default function GNHub() {
           <span style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>On the streets, in every colour</span>
         </div>
         <div className="dx-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gridAutoRows: 'clamp(110px,26vw,180px)', gap: 16 }}>
-          <video src={ASSET('hero-video.mp4')} poster={ASSET('hero-poster.webp')} autoPlay muted loop playsInline style={{ gridColumn: 'span 2', gridRow: 'span 2', width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
+          <AutoplayVideo src={ASSET('hero-video.mp4')} poster={ASSET('hero-poster.webp')} style={{ gridColumn: 'span 2', gridRow: 'span 2', width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
           <img src={ASSET('gn-green.webp')} srcSet={SRCSET('gn-green')} sizes="(max-width: 720px) 50vw, 330px" loading="lazy" decoding="async" alt="GN Model, Electric Green, studio side profile" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
           <img src={ASSET('gn-red.webp')} srcSet={SRCSET('gn-red')} sizes="(max-width: 720px) 50vw, 330px" loading="lazy" decoding="async" alt="GN Model, Signal Red, three-quarter front" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16, border: '1px solid var(--dx-border)' }} />
           <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 660px" loading="lazy" decoding="async" alt="GN Model, Midnight Black, on an Abuja street" style={{ gridColumn: 'span 2', width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: 16, border: '1px solid var(--dx-border)' }} />

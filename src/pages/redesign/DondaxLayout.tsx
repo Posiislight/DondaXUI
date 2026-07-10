@@ -20,6 +20,43 @@ const MenuIcon = ({ open }: { open: boolean }) => (
   </svg>
 );
 
+/**
+ * <video> that fights to keep autoplaying on mobile: Low Power Mode /
+ * Data Saver block autoplay, and iOS pauses videos scrolled off-screen.
+ * Retries play() on first touch, on scroll back into view, and when the
+ * tab becomes visible again.
+ */
+export function AutoplayVideo(props: React.ComponentPropsWithoutRef<'video'>) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    video.muted = true; // set the property directly — required for autoplay
+    const tryPlay = () => {
+      if (video.paused) video.play().catch(() => {});
+    };
+    tryPlay();
+
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible') tryPlay();
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) tryPlay();
+    });
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('touchstart', tryPlay, { passive: true });
+    observer.observe(video);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('touchstart', tryPlay);
+      observer.disconnect();
+    };
+  }, []);
+
+  return <video ref={ref} autoPlay muted loop playsInline {...props} />;
+}
+
 function Brand() {
   return (
     <Link to="/" className="dx-nav__brand">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import DondaxLayout, { DondaxNav } from './DondaxLayout';
+import DondaxLayout, { DondaxNav, AutoplayVideo } from './DondaxLayout';
 import Reveal from './Reveal';
 import { ASSET, SRCSET, STAT_STRIP, COLOURS } from './data';
 
@@ -34,13 +34,9 @@ function HeroStreaks() {
 function Hero() {
   return (
     <div style={{ position: 'relative', height: '88vh', minHeight: 600, overflow: 'hidden' }}>
-      <video
+      <AutoplayVideo
         src={ASSET('hero-video.mp4')}
         poster={ASSET('hero-poster.webp')}
-        autoPlay
-        muted
-        loop
-        playsInline
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       />
       <HeroStreaks />
