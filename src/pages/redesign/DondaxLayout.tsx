@@ -82,7 +82,6 @@ export function DondaxNav({ active, showOrderCta = true }: DondaxNavProps) {
           </div>
         </div>
         <Link to="/gnhub" className={active === '/gnhub' ? 'is-active' : undefined}>GNHub</Link>
-        <Link to="/order" className={active === '/order' ? 'is-active' : undefined}>Order</Link>
         <Link to="/#contact">Contact</Link>
       </div>
       {showOrderCta ? (

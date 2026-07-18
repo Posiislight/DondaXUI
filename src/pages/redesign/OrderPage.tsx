@@ -1,4 +1,6 @@
 import { useState, type FormEvent } from 'react';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import DondaxLayout from './DondaxLayout';
 import { COLOURS } from './data';
 
@@ -8,9 +10,10 @@ export default function OrderPage() {
   const [errorMsg, setErrorMsg] = useState('');
 
   /* controlled form fields */
-  const [fullName, setFullName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState<string | undefined>('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -20,23 +23,18 @@ export default function OrderPage() {
     setStatus('sending');
     setErrorMsg('');
 
-    /* split full name into first / last for the API */
-    const nameParts = fullName.trim().split(/\s+/);
-    const first_name = nameParts[0] || '';
-    const last_name = nameParts.slice(1).join(' ') || '';
-
     try {
       const res = await fetch('/api/sendemail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          first_name,
-          last_name,
+          first_name: firstName,
+          last_name: lastName,
           email,
-          phone,
+          phone: phone || '',
           address,
           city,
-          zip_code: state, // re-using state field for region/state
+          zip_code: state,
           motorcycle_model: 'GN Model',
           color: colour.name,
           quantity: 1,
@@ -72,11 +70,17 @@ export default function OrderPage() {
               <div className="dx-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <input
                   required
-                  placeholder="Full Name"
+                  placeholder="First Name"
                   className="dx-input"
-                  style={{ gridColumn: 'span 2' }}
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <input
+                  required
+                  placeholder="Last Name"
+                  className="dx-input"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
                 <input
                   required
@@ -86,13 +90,15 @@ export default function OrderPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <input
-                  required
-                  placeholder="Phone Number"
-                  className="dx-input"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+                <div className="dx-phone-wrap">
+                  <PhoneInput
+                    international
+                    defaultCountry="NG"
+                    placeholder="Phone Number"
+                    value={phone}
+                    onChange={(val) => setPhone(val)}
+                  />
+                </div>
               </div>
             </section>
 

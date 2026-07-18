@@ -259,6 +259,34 @@
 }
 .dx-input:focus { border-color: var(--dx-accent); }
 
+/* ---------- phone input (react-phone-number-input) ---------- */
+.dx-phone-wrap .PhoneInput {
+  background: var(--dx-surface);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 16px;
+  transition: border-color 0.2s;
+}
+.dx-phone-wrap .PhoneInput:focus-within { border-color: var(--dx-accent); }
+.dx-phone-wrap .PhoneInputInput {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font: 500 14px var(--dx-manrope);
+  padding: 4px 0;
+}
+.dx-phone-wrap .PhoneInputInput::placeholder { color: oklch(50% 0.015 95); }
+.dx-phone-wrap .PhoneInputCountry { margin-right: 10px; }
+.dx-phone-wrap .PhoneInputCountrySelect {
+  background: var(--dx-surface);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+}
+.dx-phone-wrap .PhoneInputCountrySelect option { background: oklch(16% 0.006 95); color: #fff; }
+.dx-phone-wrap .PhoneInputCountrySelectArrow { color: rgba(255,255,255,.5); }
+
 /* ============================================================
    Responsive — ported from the mockups' @media (max-width:760px)
    ============================================================ */
