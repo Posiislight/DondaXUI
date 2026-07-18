@@ -8,38 +8,43 @@ export default function ProductDetail() {
 
   return (
     <DondaxLayout active="/products">
-      <div style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 56px 96px' }} className="dx-section">
+      <div className="dx-section" style={{ maxWidth: 1400, margin: '0 auto', padding: '48px 48px 96px' }}>
         <Link
           to="/products"
-          style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 32 }}
+          style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-faint)', display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 32 }}
         >
           ← Back to Motors
         </Link>
 
-        <div className="dx-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 64, alignItems: 'start' }}>
+        <div className="dx-m-cols dx-m-cols--g36" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, alignItems: 'start' }}>
           {/* gallery */}
           <div>
-            <img
-              src={selected.image}
-              srcSet={selected.imageSet}
-              sizes="(max-width: 720px) 100vw, 640px"
-              decoding="async"
-              alt={`DondaX GN Model — ${selected.name}`}
-              style={{ width: '100%', height: 'clamp(280px,80vw,480px)', objectFit: 'cover', borderRadius: 20, border: '1px solid var(--dx-border)' }}
-            />
+            <div className="dx-studio dx-m-pd-hero" style={{ borderRadius: 20, height: 480 }}>
+              <img
+                src={selected.image}
+                srcSet={selected.imageSet}
+                sizes="(max-width: 760px) 100vw, 720px"
+                decoding="async"
+                alt={`DondaX GN Model — ${selected.name}`}
+              />
+            </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, marginTop: 14 }}>
               {COLOURS.map((c) => (
                 <button
                   key={c.key}
                   onClick={() => setSelected(c)}
                   aria-label={`View ${c.name}`}
+                  className="dx-studio dx-m-thumb"
                   style={{
-                    padding: 0, cursor: 'pointer', background: 'none', borderRadius: 12,
+                    padding: 0,
+                    cursor: 'pointer',
+                    borderRadius: 12,
+                    height: 120,
                     border: `2px solid ${selected.key === c.key ? 'var(--dx-accent)' : 'rgba(255,255,255,.1)'}`,
-                    overflow: 'hidden', transition: 'border-color .25s',
+                    transition: 'border-color .25s',
                   }}
                 >
-                  <img src={c.image} srcSet={c.imageSet} sizes="220px" loading="lazy" decoding="async" alt={`GN Model ${c.name}`} style={{ width: '100%', height: 'clamp(72px,22vw,120px)', objectFit: 'cover', display: 'block' }} />
+                  <img src={c.image} srcSet={c.imageSet} sizes="220px" loading="lazy" decoding="async" alt={`GN Model ${c.name}`} style={{ pointerEvents: 'none' }} />
                 </button>
               ))}
             </div>
@@ -48,14 +53,14 @@ export default function ProductDetail() {
           {/* info */}
           <div>
             <div className="dx-eyebrow" style={{ marginBottom: 14 }}>GN Series</div>
-            <h1 style={{ font: '800 clamp(32px,6vw,44px) var(--dx-sora)', margin: '0 0 16px' }}>GN Model</h1>
+            <h1 className="dx-m-fs-32" style={{ font: '800 44px var(--dx-sora)', margin: '0 0 16px' }}>GN Model</h1>
             <p style={{ font: '500 16px/1.7 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 0 28px' }}>
               Built for the city. Smart connectivity, advanced lithium-ion battery technology, and a design that turns
               heads — the everyday electric motorcycle for African cities.
             </p>
 
             <div style={{ marginBottom: 32 }}>
-              <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-muted)', marginBottom: 12 }}>
+              <div style={{ font: '600 12px var(--dx-manrope)', color: 'oklch(60% 0.015 95)', marginBottom: 12 }}>
                 Colour — <span style={{ color: '#fff', fontWeight: 700 }}>{selected.name}</span>
               </div>
               <div style={{ display: 'flex', gap: 14 }}>
@@ -75,11 +80,22 @@ export default function ProductDetail() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 32 }}>
-              {SPECS.map((spec) => (
-                <div key={spec.label} style={{ background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 12, padding: 18 }}>
-                  <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-muted)', marginBottom: 6 }}>{spec.label}</div>
-                  <div style={{ font: '700 18px var(--dx-sora)' }}>{spec.value}</div>
+            {/* light spec card */}
+            <div
+              className="dx-card-light"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', borderRadius: 16, boxShadow: '0 18px 44px -18px rgba(0,0,0,.6)', marginBottom: 32 }}
+            >
+              {SPECS.map((spec, i) => (
+                <div
+                  key={spec.label}
+                  style={{
+                    padding: '22px 26px',
+                    borderRight: i % 2 === 0 ? '1px solid rgba(0,0,0,.08)' : undefined,
+                    borderBottom: i < 2 ? '1px solid rgba(0,0,0,.08)' : undefined,
+                  }}
+                >
+                  <div style={{ font: '600 11px var(--dx-manrope)', letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--dx-light-muted)' }}>{spec.label}</div>
+                  <div style={{ font: '800 26px var(--dx-sora)', color: 'var(--dx-accent-deep)', marginTop: 4 }}>{spec.value}</div>
                 </div>
               ))}
             </div>

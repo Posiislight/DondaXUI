@@ -12,11 +12,12 @@ export default function OrderPage() {
   };
 
   return (
-    <DondaxLayout active="/order">
-      <form onSubmit={onSubmit} style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 56px 96px' }} className="dx-section">
-        <h1 style={{ font: '800 clamp(28px,5.5vw,36px) var(--dx-sora)', margin: '0 0 40px' }}>Place Order Request</h1>
+    <DondaxLayout active="/order" navShowOrderCta={false}>
+      <form onSubmit={onSubmit} className="dx-section" style={{ maxWidth: 1100, margin: '0 auto', padding: '56px 48px 96px' }}>
+        <div className="dx-eyebrow" style={{ marginBottom: 14 }}>Order Request</div>
+        <h1 className="dx-m-fs-32" style={{ font: '800 44px var(--dx-sora)', margin: '0 0 40px', letterSpacing: -0.5 }}>Place Order Request</h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 40, alignItems: 'start' }}>
+        <div className="dx-m-cols dx-m-cols--g32" style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.9fr', gap: 40, alignItems: 'start' }}>
           {/* form fields */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             <section>
@@ -64,28 +65,33 @@ export default function OrderPage() {
             </section>
           </div>
 
-          {/* summary */}
-          <aside className="dx-order-summary" style={{ background: 'var(--dx-surface)', border: '1px solid var(--dx-border)', borderRadius: 18, padding: 28, position: 'sticky', top: 24 }}>
+          {/* light summary card */}
+          <aside
+            className="dx-order-summary dx-card-light"
+            style={{ borderRadius: 18, padding: 28, position: 'sticky', top: 24, overflow: 'visible' }}
+          >
             <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 20px' }}>Order Summary</h2>
             <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 24 }}>
-              <img src={colour.image} srcSet={colour.imageSet} sizes="64px" loading="lazy" decoding="async" alt="GN Model" style={{ width: 64, height: 64, flex: 'none', objectFit: 'cover', borderRadius: 10 }} />
+              <span className="dx-studio" style={{ width: 72, height: 64, flex: 'none', borderRadius: 10 }}>
+                <img src={colour.image} srcSet={colour.imageSet} sizes="72px" loading="lazy" decoding="async" alt="GN Model" />
+              </span>
               <div>
                 <div style={{ font: '700 15px var(--dx-sora)' }}>GN Model</div>
-                <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>{colour.name}</div>
+                <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-light-muted)' }}>{colour.name}</div>
               </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, font: '500 14px var(--dx-manrope)', color: 'var(--dx-text-muted)', borderTop: '1px solid var(--dx-border)', paddingTop: 20 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Product Price</span><span style={{ color: '#fff' }}>On request</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Delivery</span><span style={{ color: '#fff' }}>Free</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, font: '500 14px var(--dx-manrope)', color: 'oklch(40% 0.01 95)', borderTop: '1px solid rgba(0,0,0,.08)', paddingTop: 20 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Product Price</span><span style={{ color: 'var(--dx-light-ink)', fontWeight: 700 }}>On request</span></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Delivery</span><span style={{ color: 'var(--dx-light-ink)', fontWeight: 700 }}>Free</span></div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', font: '800 18px var(--dx-sora)', marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--dx-border)' }}>
-              <span>Total</span><span className="dx-accent">Quote on request</span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', font: '800 18px var(--dx-sora)', marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(0,0,0,.08)' }}>
+              <span>Total</span><span style={{ color: 'var(--dx-accent-deep)' }}>Quote on request</span>
             </div>
             <button type="submit" className="dx-btn" style={{ display: 'flex', width: '100%', marginTop: 24, padding: 16 }}>
               {submitted ? 'Request Received ✓' : 'Place Order'}
             </button>
             {submitted && (
-              <p style={{ font: '500 13px/1.5 var(--dx-manrope)', color: 'var(--dx-text-muted)', marginTop: 14, textAlign: 'center' }}>
+              <p style={{ font: '500 13px/1.5 var(--dx-manrope)', color: 'var(--dx-light-muted)', marginTop: 14, textAlign: 'center' }}>
                 Thanks — our team will reach out with a quote shortly.
               </p>
             )}

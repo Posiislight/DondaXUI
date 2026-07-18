@@ -11,36 +11,22 @@ export interface Colour {
   key: 'black' | 'green' | 'red';
   name: string;
   swatch: string;
+  /** studio shot on a white sweep — used with .dx-studio (contain + multiply) */
   image: string;
   imageSet: string;
 }
 
 export const COLOURS: Colour[] = [
-  { key: 'black', name: 'Midnight Black', swatch: '#141414', image: ASSET('gn-urban.webp'), imageSet: SRCSET('gn-urban') },
-  { key: 'green', name: 'Electric Green', swatch: '#3fa02c', image: ASSET('gn-green.webp'), imageSet: SRCSET('gn-green') },
-  { key: 'red', name: 'Signal Red', swatch: '#cd2318', image: ASSET('gn-red.webp'), imageSet: SRCSET('gn-red') },
+  { key: 'black', name: 'Midnight Black', swatch: '#141414', image: ASSET('gn-studio-black.webp'), imageSet: SRCSET('gn-studio-black') },
+  { key: 'green', name: 'Electric Green', swatch: '#3fa02c', image: ASSET('gn-studio-green.webp'), imageSet: SRCSET('gn-studio-green') },
+  { key: 'red', name: 'Signal Red', swatch: '#cd2318', image: ASSET('gn-studio-red.webp'), imageSet: SRCSET('gn-studio-red') },
 ];
 
 export const SPECS = [
   { label: 'Range', value: '100 km' },
   { label: 'Top Speed', value: '120 km/h' },
-  { label: 'Charge Time', value: '2-3 hrs' },
+  { label: 'Charge Time', value: '2–3 hrs' },
   { label: 'Weight', value: '95 kg' },
-];
-
-export const STAT_STRIP = [
-  { value: '100km', label: 'Range per charge' },
-  { value: '120km/h', label: 'Top speed' },
-  { value: '2-3h', label: 'Fast charge time' },
-];
-
-export const NAV_LINKS = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/#about' },
-  { label: 'Products', to: '/products' },
-  { label: 'GNHub', to: '/gnhub' },
-  { label: 'Order', to: '/order' },
-  { label: 'Contact', to: '/#contact' },
 ];
 
 export interface Story {
@@ -118,6 +104,10 @@ export const STORIES: Story[] = [
     ],
   },
 ];
+
+/** longer excerpt used only on the GNHub featured card (per the mockup) */
+export const FEATURED_EXCERPT =
+  'Our flagship model brings cutting-edge lithium-ion battery technology and smart connectivity to the streets of Africa — 100km of range, 120km/h top speed, and a design built to turn heads.';
 
 export const STORY_FILTERS = [
   { key: 'all', label: 'All', category: null },

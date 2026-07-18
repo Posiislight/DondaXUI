@@ -1,25 +1,33 @@
 /* ============================================================
    DondaX redesign — scoped design system
+   Translated from the "Donda mobile optimization" mockups
+   (DondaX - Home/Products/Product Detail/Order/GNHub .dc.html).
    All rules are scoped under .dondax-root so the redesign
    stays isolated and easy to preview / iterate on.
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 .dondax-root {
-  /* palette (matches the approved oklch mockup) */
+  /* palette (matches the mockups' oklch values) */
   --dx-bg: oklch(12% 0.004 95);
-  --dx-bg-hero: oklch(11% 0.004 95);
   --dx-surface: oklch(16% 0.006 95);
-  --dx-surface-glass: oklch(15% 0.006 95 / 0.75);
   --dx-accent: oklch(80% 0.19 128);
   --dx-accent-hi: oklch(87% 0.19 128);
-  --dx-accent-ink: oklch(14% 0.02 128);
+  --dx-accent-ink: oklch(14% 0.02 128);      /* dark text on accent buttons */
+  --dx-accent-deep: oklch(52% 0.17 128);     /* accent on light backgrounds */
   --dx-text: oklch(97% 0.004 95);
-  --dx-text-soft: oklch(80% 0.012 95);
-  --dx-text-muted: oklch(65% 0.015 95);
+  --dx-text-soft: oklch(82% 0.012 95);
+  --dx-text-muted: oklch(70% 0.015 95);
   --dx-text-faint: oklch(55% 0.015 95);
   --dx-border: rgba(255, 255, 255, 0.08);
+  --dx-border-nav: rgba(255, 255, 255, 0.07);
   --dx-border-strong: rgba(255, 255, 255, 0.15);
+  /* light bands */
+  --dx-light-band: oklch(96% 0.005 95);
+  --dx-light-card: oklch(97% 0.005 95);
+  --dx-light-ink: oklch(16% 0.006 95);
+  --dx-light-muted: oklch(45% 0.01 95);
+  --dx-light-border: rgba(0, 0, 0, 0.08);
   --dx-sora: 'Sora', system-ui, sans-serif;
   --dx-manrope: 'Manrope', system-ui, sans-serif;
 
@@ -53,20 +61,21 @@
 .dondax-root input::placeholder { color: oklch(50% 0.015 95); }
 .dondax-root img { display: block; max-width: 100%; }
 
-/* ---------- shared layout helpers ---------- */
+/* ---------- shared helpers ---------- */
 .dx-container { max-width: 1400px; margin: 0 auto; }
 .dx-accent { color: var(--dx-accent); }
 .dx-eyebrow {
   font: 700 13px var(--dx-manrope);
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--dx-accent);
 }
+.dx-eyebrow--deep { color: var(--dx-accent-deep); }
 
 /* ---------- buttons ----------
+   Mockup buttons: accent pill with DARK ink text.
    Selectors are prefixed with .dondax-root so they beat the global
-   `.dondax-root a { color: var(--dx-accent) }` link rule — otherwise
-   anchor-based buttons render with green text. */
+   `.dondax-root a { color: var(--dx-accent) }` link rule. */
 .dx-btn,
 .dondax-root .dx-btn {
   display: inline-flex;
@@ -74,7 +83,7 @@
   justify-content: center;
   gap: 8px;
   background: var(--dx-accent);
-  color: #fff;
+  color: var(--dx-accent-ink);
   font: 700 15px var(--dx-manrope);
   padding: 15px 30px;
   border-radius: 999px;
@@ -83,8 +92,8 @@
   transition: transform 0.25s, filter 0.25s;
 }
 .dx-btn:hover,
-.dondax-root .dx-btn:hover { transform: translateY(-2px); filter: brightness(1.08); color: #fff; }
-.dx-btn--sm { font-size: 14px; padding: 12px 24px; }
+.dondax-root .dx-btn:hover { transform: translateY(-2px); filter: brightness(1.08); color: var(--dx-accent-ink); }
+.dx-btn--sm { font-size: 14px; padding: 11px 24px; }
 
 .dx-btn-outline,
 .dondax-root .dx-btn-outline {
@@ -92,7 +101,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1.5px solid var(--dx-border-strong);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   color: #fff;
   font: 700 15px var(--dx-manrope);
   padding: 15px 30px;
@@ -107,50 +116,132 @@
   background: oklch(80% 0.19 128 / 0.08);
   color: #fff;
 }
-.dx-btn-outline--sm { font-size: 14px; padding: 12px 24px; }
+.dx-btn-outline--sm { font-size: 14px; padding: 12px 26px; }
 
 /* ---------- nav ---------- */
 .dx-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px 56px;
+  padding: 24px 48px;
+  border-bottom: 1px solid var(--dx-border-nav);
 }
-.dx-nav--border { border-bottom: 1px solid var(--dx-border); }
 .dx-nav__brand { display: flex; align-items: center; gap: 10px; color: #fff; }
-.dx-nav__brand img { width: 34px; height: 34px; object-fit: cover; border-radius: 8px; }
-.dx-nav__brand span { font: 800 21px var(--dx-sora); letter-spacing: 0.5px; }
-.dx-nav__links { display: flex; gap: 34px; font: 600 14px var(--dx-manrope); color: oklch(84% 0.008 95); }
+.dondax-root .dx-nav__brand { color: #fff; }
+.dx-nav__brand img { width: 32px; height: 32px; object-fit: cover; border-radius: 8px; }
+.dx-nav__brand span { font: 800 20px var(--dx-sora); letter-spacing: 0.5px; }
+.dx-nav__links { display: flex; gap: 32px; font: 600 14px var(--dx-manrope); color: oklch(78% 0.01 95); align-items: center; }
 .dx-nav__links a { color: inherit; }
 .dx-nav__links a:hover { color: #fff; }
 .dx-nav__links a.is-active { color: var(--dx-accent); }
-.dx-nav__toggle { display: none; background: none; border: 0; color: #fff; cursor: pointer; padding: 6px; }
 
-/* ---------- cards ---------- */
-.dx-card {
+/* Products dropdown */
+.dx-nav__drop { position: relative; }
+.dx-nav__drop-trigger { display: inline-flex; align-items: center; gap: 6px; }
+.dx-nav__drop-caret { font-size: 9px; opacity: 0.8; }
+.dx-nav__menu {
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  min-width: 210px;
+  padding-top: 14px;
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.dx-nav__drop:hover .dx-nav__menu,
+.dx-nav__drop:focus-within .dx-nav__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dx-nav__menu-inner {
   background: var(--dx-surface);
-  border: 1px solid var(--dx-border);
-  border-radius: 20px;
-  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.dx-card--glass {
-  background: var(--dx-surface-glass);
-  backdrop-filter: blur(6px);
+.dondax-root .dx-nav__menu-inner a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: oklch(92% 0.01 95);
+  font: 700 14px var(--dx-manrope);
+  border-radius: 8px;
 }
+.dondax-root .dx-nav__menu-inner a:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+.dx-nav__menu-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dx-accent); flex: none; }
 
 /* ---------- footer ---------- */
 .dx-footer {
-  padding: 44px 56px;
-  border-top: 1px solid var(--dx-border);
+  padding: 36px 48px;
+  border-top: 1px solid var(--dx-border-nav);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
 }
-.dx-footer__brand { display: flex; align-items: center; gap: 9px; font: 800 18px var(--dx-sora); }
-.dx-footer__brand img { width: 26px; height: 26px; object-fit: cover; border-radius: 6px; }
+.dx-footer__brand { display: flex; align-items: center; gap: 9px; font: 800 17px var(--dx-sora); }
+.dx-footer__brand img { width: 24px; height: 24px; object-fit: cover; border-radius: 6px; }
 .dx-footer__copy { font: 500 13px var(--dx-manrope); color: var(--dx-text-faint); }
+
+/* ---------- cards / surfaces ---------- */
+.dx-card {
+  background: var(--dx-surface);
+  border: 1px solid var(--dx-border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* light band sections (Pick your colour, newsletter, stats, summary) */
+.dx-band-light { background: var(--dx-light-band); color: var(--dx-light-ink); }
+.dx-card-light {
+  background: var(--dx-light-card);
+  color: var(--dx-light-ink);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* white colour-cards on the light band */
+.dx-colour-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.dx-colour-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.35); }
+
+/* light "studio" gradient boxes (product detail gallery, order summary) */
+.dx-studio {
+  background: linear-gradient(160deg, oklch(93% 0.01 95), oklch(85% 0.012 95));
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dx-studio img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+
+/* dark hover cards (GNHub) */
+.dx-featured { transition: border-color 0.3s; }
+.dx-featured:hover { border-color: oklch(80% 0.19 128 / 0.4) !important; }
+.dx-update-card { transition: transform 0.3s, border-color 0.3s; }
+.dx-update-card:hover { transform: translateY(-6px); border-color: oklch(80% 0.19 128 / 0.5) !important; }
+.dx-contact-card { transition: border-color 0.3s; }
+.dx-contact-card:hover { border-color: oklch(80% 0.19 128 / 0.5); }
+.dx-social { transition: border-color 0.25s, transform 0.25s; }
+.dx-social:hover { border-color: var(--dx-accent); transform: translateY(-3px); color: #fff; }
 
 /* ---------- form inputs ---------- */
 .dx-input {
@@ -167,133 +258,97 @@
 .dx-input:focus { border-color: var(--dx-accent); }
 
 /* ============================================================
-   Keyframes (page-wide motion)
+   Responsive — ported from the mockups' @media (max-width:760px)
    ============================================================ */
-@keyframes dx-gridDrift { from { background-position: 0 0, 0 0; } to { background-position: 56px 56px, 56px 56px; } }
-@keyframes dx-pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 oklch(80% 0.19 128 / 0.5); }
-  70% { box-shadow: 0 0 0 10px oklch(80% 0.19 128 / 0); }
-}
-@keyframes dx-streak {
-  0% { transform: translateX(0); opacity: 0; }
-  12% { opacity: 1; }
-  88% { opacity: 1; }
-  100% { transform: translateX(360%); opacity: 0; }
-}
-@keyframes dx-imgFloat { 0% { transform: scale(1.03); } 100% { transform: scale(1.1); } }
-@keyframes dx-shine {
-  0% { transform: translateX(-170%) skewX(-18deg); opacity: 0; }
-  10% { opacity: 1; }
-  32% { transform: translateX(240%) skewX(-18deg); opacity: 0; }
-  100% { transform: translateX(240%) skewX(-18deg); opacity: 0; }
-}
 
-/* animated grid backdrop */
-.dx-grid-fixed { position: fixed; inset: -80px; z-index: 0; pointer-events: none; }
-.dx-grid-parallax {
-  position: absolute;
-  inset: -60px;
-  background-image:
-    linear-gradient(oklch(80% 0.19 128 / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(80% 0.19 128 / 0.05) 1px, transparent 1px);
-  background-size: 56px 56px;
-  animation: dx-gridDrift 22s linear infinite;
-  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 40%, transparent 100%);
-  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 40%, transparent 100%);
-}
-.dx-streak {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, oklch(85% 0.19 128 / 0.45), transparent);
-  filter: blur(0.5px);
-}
-
-.dx-shine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(100deg, transparent 20%, oklch(96% 0.03 128 / 0.16) 50%, transparent 80%);
-  animation: dx-shine 8s ease-in-out infinite;
-  pointer-events: none;
-}
-.dx-media {
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid var(--dx-border);
-  transition: box-shadow 0.45s, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.dx-media:hover { transform: translateY(-8px); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.6); }
-.dx-media img { animation: dx-imgFloat 16s ease-in-out infinite alternate; }
-
-.dx-pulse-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--dx-accent); flex: none;
-  animation: dx-pulseDot 2.4s infinite;
-}
-
-/* hover treatments for cards */
-.dx-colour-card { transition: transform 0.4s, border-color 0.4s; }
-.dx-colour-card:hover { transform: translateY(-8px); border-color: rgba(255, 255, 255, 0.22); }
-.dx-about-card { transition: transform 0.3s, border-color 0.3s; }
-.dx-about-card:hover { transform: translateY(-6px); border-color: oklch(80% 0.19 128 / 0.5); }
-.dx-contact-card { transition: border-color 0.3s; }
-.dx-contact-card:hover { border-color: oklch(80% 0.19 128 / 0.5); }
-.dx-social { transition: border-color 0.25s, transform 0.25s; }
-.dx-social:hover { border-color: var(--dx-accent); transform: translateY(-3px); color: #fff; }
-.dx-featured { transition: border-color 0.3s; }
-.dx-featured:hover { border-color: oklch(80% 0.19 128 / 0.4); }
-.dx-update-card { transition: transform 0.3s, border-color 0.3s; }
-.dx-update-card:hover { transform: translateY(-6px); border-color: oklch(80% 0.19 128 / 0.5); }
-
-/* ============================================================
-   Responsive
-   ============================================================ */
+/* nav — mobile: brand + CTA on the top row, links become a
+   horizontally scrollable strip underneath */
 @media (max-width: 900px) {
-  .dx-nav { padding: 20px 24px; }
-  .dx-nav__links { display: none; }
-  .dx-nav__links.is-open {
-    display: flex;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    gap: 4px;
-    padding: 16px 24px 24px;
-    background: var(--dx-bg-hero);
-    border-bottom: 1px solid var(--dx-border);
-    z-index: 20;
+  .dx-nav { flex-wrap: wrap; padding: 16px 20px; row-gap: 14px; }
+  .dx-nav__links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    gap: 22px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  .dx-nav__links.is-open a { padding: 10px 0; }
-  .dx-nav__toggle { display: inline-flex; }
-  .dx-footer, .dx-section { padding-left: 24px !important; padding-right: 24px !important; }
+  .dx-nav__links::-webkit-scrollbar { display: none; }
+  .dx-nav__links a { flex: none; white-space: nowrap; }
+  /* dropdown is hover-only — hide the menu in the scroll strip */
+  .dx-nav__menu { display: none; }
+  .dx-section { padding-left: 24px !important; padding-right: 24px !important; }
 }
 
-@media (max-width: 720px) {
-  .dx-gallery { grid-template-columns: repeat(2, 1fr) !important; }
-  .dx-order-summary { position: static !important; }
-  .dx-grid { gap: 32px !important; }
-  .dx-stats { grid-template-columns: 1fr !important; }
-  .dx-stats .dx-stat {
-    border-right: none !important;
-    border-bottom: 1px solid var(--dx-border);
-    padding: 20px 24px !important;
+@media (max-width: 760px) {
+  .dx-section { padding-left: 20px !important; padding-right: 20px !important; }
+  .dx-footer { padding: 28px 20px; }
+
+  /* grids collapse to one column */
+  .dx-m-cols { grid-template-columns: 1fr !important; }
+  .dx-m-cols--g32 { gap: 32px !important; }
+  .dx-m-cols--g36 { gap: 36px !important; }
+
+  /* home hero */
+  .dx-m-hero { height: 560px !important; }
+  .dx-m-hero-text { bottom: 56px !important; }
+
+  /* home floating stats card: 2x2 */
+  .dx-m-stats-wrap { margin: -48px 20px 0 !important; }
+  .dx-m-stats { grid-template-columns: 1fr 1fr !important; }
+  .dx-m-stats > div {
+    padding: 18px 20px !important;
+    border-right: 0 !important;
   }
-  .dx-stats .dx-stat:last-child { border-bottom: none; }
-  .dx-stats .dx-stat__value { font-size: 30px !important; }
+  .dx-m-stats > div:nth-child(odd) { border-right: 1px solid rgba(0, 0, 0, 0.08) !important; }
+  .dx-m-stats > div:nth-child(-n+2) { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+  .dx-m-stats .dx-stat__value { font-size: 26px !important; }
+
+  /* photo-overlay sections (mission, lifestyle strip) */
+  .dx-m-overlay-text { left: 20px !important; right: 20px !important; max-width: none !important; }
+
+  /* home CTA */
+  .dx-m-cta { padding: 0 20px 64px !important; }
+
+  /* products spec band */
+  .dx-m-specband { grid-template-columns: 1fr !important; }
+  .dx-m-specband > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 20px !important;
+  }
+  .dx-m-specband > div:last-of-type { border-bottom: 0; }
+  .dx-m-specband .dx-spec__value { font-size: 36px !important; }
+
+  /* product detail */
+  .dx-m-pd-hero { height: 300px !important; }
+  .dx-m-thumb { height: 84px !important; }
+
+  /* order */
+  .dx-form-grid { grid-template-columns: 1fr !important; }
+  .dx-form-grid > .dx-input { grid-column: auto !important; }
+  .dx-order-summary { position: static !important; }
+
+  /* gnhub */
+  .dx-m-fimg { min-height: 240px !important; }
+  .dx-m-card-pad { padding: 28px 20px !important; }
+  .dx-gallery { grid-template-columns: repeat(2, 1fr) !important; grid-auto-rows: 130px !important; }
+  .dx-m-simg { height: 240px !important; }
+
+  /* mockup mobile type scale */
+  .dx-m-fs-26 { font-size: 26px !important; }
+  .dx-m-fs-28 { font-size: 28px !important; }
+  .dx-m-fs-32 { font-size: 32px !important; }
+  .dx-m-fs-36 { font-size: 36px !important; }
+  .dx-m-fs-38 { font-size: 38px !important; }
 }
 
 @media (max-width: 560px) {
-  .dx-form-grid { grid-template-columns: 1fr !important; }
-  .dx-form-grid > .dx-input { grid-column: auto !important; }
   .dx-nav .dx-btn--sm { padding: 10px 16px; font-size: 13px; }
 }
 
 @media (max-width: 400px) {
-  .dx-nav .dx-btn--sm { display: none; }
   .dx-btn, .dx-btn-outline { padding: 14px 24px; font-size: 14px; }
 }
 

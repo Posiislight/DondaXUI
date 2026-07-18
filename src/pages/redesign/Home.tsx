@@ -1,79 +1,41 @@
 import { Link } from 'react-router-dom';
-import DondaxLayout, { DondaxNav, AutoplayVideo } from './DondaxLayout';
+import DondaxLayout, { AutoplayVideo } from './DondaxLayout';
 import Reveal from './Reveal';
-import { ASSET, SRCSET, STAT_STRIP, COLOURS } from './data';
-
-const SECTION = { maxWidth: 1400, margin: '0 auto' } as const;
-
-function HeroStreaks() {
-  const streaks: Array<[number, number, number, number, number]> = [
-    // top%, width%, height, duration, delay
-    [22, 42, 2, 3.4, 0], [44, 36, 1, 4.6, 1.1], [63, 48, 2, 4, 2.2], [78, 30, 1, 5.2, 0.6],
-  ];
-  return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }} aria-hidden>
-      {streaks.map(([top, width, h, dur, delay], i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            top: `${top}%`,
-            left: '-42%',
-            width: `${width}%`,
-            height: h,
-            background: 'linear-gradient(90deg,transparent,oklch(85% 0.19 128 / .7),transparent)',
-            filter: h > 1 ? 'blur(.5px)' : undefined,
-            animation: `dx-streak ${dur}s linear infinite ${delay}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+import CountUp from './CountUp';
+import { ASSET, SRCSET, COLOURS } from './data';
 
 function Hero() {
   return (
-    <div style={{ position: 'relative', height: '88vh', minHeight: 600, overflow: 'hidden' }}>
+    <div className="dx-m-hero" style={{ position: 'relative', height: 640, overflow: 'hidden' }}>
       <AutoplayVideo
         src={ASSET('hero-video.mp4')}
         poster={ASSET('hero-poster.webp')}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       />
-      <HeroStreaks />
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background:
-            'linear-gradient(180deg,rgba(9,9,8,.62) 0%,rgba(9,9,8,.32) 32%,rgba(9,9,8,.62) 62%,rgba(9,9,8,.98) 100%)',
+          background: 'linear-gradient(180deg,rgba(8,8,7,.55) 0%,rgba(8,8,7,.15) 40%,rgba(8,8,7,.78) 100%)',
           pointerEvents: 'none',
         }}
       />
-      <div style={{ position: 'relative', zIndex: 3 }}>
-        <DondaxNav active="/" />
-      </div>
-
-      <div className="dx-section" style={{ position: 'absolute', bottom: 64, left: 0, right: 0, padding: '0 56px', zIndex: 2 }}>
+      <div className="dx-m-hero-text" style={{ position: 'absolute', left: 48, right: 48, bottom: 120 }}>
         <Reveal>
           <div className="dx-eyebrow" style={{ marginBottom: 16 }}>
             Electric Motorcycles · Designed in Nigeria
           </div>
         </Reveal>
         <Reveal delay={0.08}>
-          <h1 style={{ font: '800 clamp(40px,6vw,76px)/0.98 var(--dx-sora)', margin: '0 0 22px', maxWidth: 900, letterSpacing: -1 }}>
+          <h1 className="dx-m-fs-38" style={{ font: '800 clamp(44px,5.5vw,72px)/0.98 var(--dx-sora)', margin: '0 0 20px', maxWidth: 760, letterSpacing: -1.5 }}>
             Ride electric.
             <br />
             Ride DondaX.
           </h1>
         </Reveal>
         <Reveal delay={0.16}>
-          <p style={{ font: '500 17px/1.6 var(--dx-manrope)', color: 'var(--dx-text-soft)', maxWidth: 520, margin: '0 0 32px' }}>
-            Cutting-edge electric motorcycles engineered for the future of urban mobility across Africa.
-          </p>
-        </Reveal>
-        <Reveal delay={0.24}>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <Link to="/products" className="dx-btn">Explore Motorcycles</Link>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
+            <Link to="/products/gn-model" className="dx-btn">Explore the GN Model</Link>
             <Link to="/order" className="dx-btn-outline">Place Order Request</Link>
           </div>
         </Reveal>
@@ -82,91 +44,100 @@ function Hero() {
   );
 }
 
-function StatStrip() {
+const STATS = [
+  { label: 'Range per charge', to: 100, suffix: ' km' },
+  { label: 'Top speed', to: 120, suffix: ' km/h' },
+  { label: 'Fast charge', to: 3, prefix: '2–', suffix: ' h' },
+  { label: 'Colourways', to: 3 },
+];
+
+function FloatingStats() {
   return (
-    <div
-      className="dx-stats"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3,1fr)',
-        borderBottom: '1px solid var(--dx-border)',
-        ...SECTION,
-        background: 'oklch(11% 0.004 95 / .6)',
-        backdropFilter: 'blur(6px)',
-      }}
-    >
-      {STAT_STRIP.map((s, i) => (
-        <Reveal
-          key={s.label}
-          delay={i * 0.1}
-          className="dx-stat"
-          style={{
-            padding: '36px 56px',
-            borderRight: i < STAT_STRIP.length - 1 ? '1px solid var(--dx-border)' : undefined,
-          }}
-        >
-          <div className="dx-stat__value" style={{ font: '800 40px var(--dx-sora)', color: 'var(--dx-accent)' }}>{s.value}</div>
-          <div style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-text-muted)', marginTop: 6 }}>{s.label}</div>
-        </Reveal>
-      ))}
+    <div className="dx-m-stats-wrap" style={{ position: 'relative', margin: '-72px 48px 0', zIndex: 2 }}>
+      <div
+        className="dx-m-stats dx-card-light"
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', boxShadow: '0 24px 60px -20px rgba(0,0,0,.7)' }}
+      >
+        {STATS.map((s, i) => (
+          <div key={s.label} style={{ padding: '32px 36px', borderRight: i < STATS.length - 1 ? '1px solid rgba(0,0,0,.08)' : undefined }}>
+            <div style={{ font: '600 12px var(--dx-manrope)', letterSpacing: 1.5, textTransform: 'uppercase', color: 'var(--dx-light-muted)' }}>
+              {s.label}
+            </div>
+            <CountUp
+              to={s.to}
+              prefix={s.prefix}
+              suffix={s.suffix}
+              className="dx-stat__value"
+              style={{ display: 'block', font: '800 40px var(--dx-sora)', color: 'var(--dx-accent-deep)', marginTop: 6 }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-function FeaturedModel() {
+function Mission() {
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))',
-        gap: 64,
-        padding: '96px 56px',
-        alignItems: 'center',
-        ...SECTION,
-      }}
-      className="dx-section dx-grid"
-    >
-      <Reveal className="dx-media">
-        <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 640px" loading="lazy" decoding="async" alt="DondaX GN Model" style={{ width: '100%', height: 'clamp(240px,60vw,420px)', objectFit: 'cover' }} />
-        <div className="dx-shine" />
-      </Reveal>
-      <Reveal delay={0.12}>
-        <div className="dx-eyebrow" style={{ marginBottom: 14 }}>Featured Model</div>
-        <h2 style={{ font: '700 40px var(--dx-sora)', margin: '0 0 16px' }}>GN Model</h2>
-        <p style={{ font: '500 16px/1.7 var(--dx-manrope)', color: 'var(--dx-text-muted)', margin: '0 0 32px', maxWidth: 440 }}>
-          Built for the city. Smart connectivity, advanced lithium-ion battery technology, and a design that turns heads.
-        </p>
-        <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <Link to="/order" className="dx-btn dx-btn--sm">Order Now</Link>
-          <Link to="/products/gn-model" className="dx-btn-outline dx-btn-outline--sm">View Details</Link>
-        </div>
-      </Reveal>
+    <div id="about" style={{ position: 'relative', marginTop: 96, overflow: 'hidden', scrollMarginTop: 20 }}>
+      <img
+        src={ASSET('gn-urban.webp')}
+        srcSet={SRCSET('gn-urban')}
+        sizes="100vw"
+        loading="lazy"
+        decoding="async"
+        alt="GN Model"
+        style={{ width: '100%', height: 520, objectFit: 'cover', objectPosition: 'center 60%', filter: 'brightness(.45) saturate(1.05)' }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(8,8,7,.85) 0%,rgba(8,8,7,.35) 60%,rgba(8,8,7,.1) 100%)' }} />
+      <div className="dx-m-overlay-text" style={{ position: 'absolute', top: '50%', left: 48, transform: 'translateY(-50%)', maxWidth: 560 }}>
+        <Reveal>
+          <div className="dx-eyebrow" style={{ marginBottom: 14 }}>Our Mission</div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <h2 className="dx-m-fs-28" style={{ font: '800 38px/1.15 var(--dx-sora)', margin: '0 0 18px', letterSpacing: -0.5 }}>
+            Movement that empowers, not just moves.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.16}>
+          <p style={{ font: '500 16px/1.8 var(--dx-manrope)', color: 'var(--dx-text-soft)' }}>
+            We are a proudly Nigerian electric mobility company cutting transportation costs, cutting emissions, and
+            creating new economic opportunity — one ride at a time.
+          </p>
+        </Reveal>
+      </div>
     </div>
   );
 }
 
 function Colours() {
   return (
-    <div style={{ ...SECTION, padding: '0 56px 40px' }} className="dx-section">
-      <Reveal style={{ textAlign: 'center', marginBottom: 44 }}>
-        <div className="dx-eyebrow" style={{ marginBottom: 14 }}>One Model · Three Colours</div>
-        <h2 style={{ font: '800 clamp(30px,3.6vw,44px) var(--dx-sora)' }}>
-          Pick your <span className="dx-accent">colour</span>
-        </h2>
-      </Reveal>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(280px,100%),1fr))', gap: 24 }}>
+    <div className="dx-band-light dx-section" style={{ padding: '88px 48px' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 20, marginBottom: 44 }}>
+        <div>
+          <div className="dx-eyebrow dx-eyebrow--deep" style={{ marginBottom: 12 }}>One model · Three colours</div>
+          <h2 className="dx-m-fs-28" style={{ font: '800 42px var(--dx-sora)', letterSpacing: -0.5 }}>Pick your colour</h2>
+        </div>
+        <Link
+          to="/products/gn-model"
+          style={{ font: '700 14px var(--dx-manrope)', color: 'oklch(25% 0.01 95)', borderBottom: '2px solid var(--dx-accent)', paddingBottom: 3 }}
+        >
+          View full specifications →
+        </Link>
+      </div>
+      <div className="dx-m-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
         {COLOURS.map((c, i) => (
-          <Reveal key={c.key} delay={i * 0.1} className="dx-card dx-colour-card">
-            <img src={c.image} srcSet={c.imageSet} sizes="(max-width: 720px) 100vw, 440px" loading="lazy" decoding="async" alt={`GN Model in ${c.name}`} style={{ width: '100%', height: 250, objectFit: 'cover' }} />
-            <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span
-                style={{
-                  width: 18, height: 18, borderRadius: '50%', background: c.swatch,
-                  border: '1px solid rgba(255,255,255,.3)', flex: 'none',
-                }}
-              />
-              <span style={{ font: '700 16px var(--dx-sora)' }}>{c.name}</span>
-            </div>
+          <Reveal key={c.key} delay={i * 0.1}>
+            <Link to="/products/gn-model" className="dx-colour-card" style={{ display: 'block', color: 'inherit' }}>
+              <img src={c.image} srcSet={c.imageSet} sizes="(max-width: 760px) 100vw, 440px" loading="lazy" decoding="async" alt={`GN Model — ${c.name}`} style={{ width: '100%', height: 280, objectFit: 'cover' }} />
+              <span style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ width: 18, height: 18, borderRadius: '50%', background: c.swatch, flex: 'none' }} />
+                  <span style={{ font: '700 16px var(--dx-sora)' }}>{c.name}</span>
+                </span>
+                <span style={{ font: '600 13px var(--dx-manrope)', color: 'var(--dx-light-muted)' }}>GN Model</span>
+              </span>
+            </Link>
           </Reveal>
         ))}
       </div>
@@ -174,79 +145,30 @@ function Colours() {
   );
 }
 
-function About() {
-  const buildPoints = [
-    'Advanced lithium-ion battery technology',
-    'Smart connectivity and IoT integration',
-    'Sustainable manufacturing processes',
-    'Local talent and innovation',
-  ];
+const WHY = [
+  { title: 'Lithium-ion power', body: 'Advanced battery technology with 2–3 hour fast charging at home or work.' },
+  { title: 'Smart connectivity', body: "IoT integration keeps you connected to your bike's health and location." },
+  { title: 'Lower running costs', body: 'No fuel, minimal maintenance — more of every fare stays in your pocket.' },
+  { title: 'Local talent', body: 'Designed in Nigeria, engineered for the streets and communities we serve.' },
+];
+
+function WhyDondax() {
   return (
-    <div id="about" style={{ ...SECTION, padding: '80px 56px', scrollMarginTop: 20 }} className="dx-section">
-      <Reveal style={{ textAlign: 'center', maxWidth: 900, margin: '0 auto 64px' }}>
-        <h2 style={{ font: '800 clamp(34px,4.4vw,56px) var(--dx-sora)', margin: '0 0 28px', letterSpacing: -0.5 }}>
-          About <span className="dx-accent">DondaX</span>
+    <div className="dx-section" style={{ padding: '88px 48px' }}>
+      <Reveal>
+        <h2 className="dx-m-fs-28" style={{ font: '800 38px var(--dx-sora)', margin: '0 0 40px', letterSpacing: -0.5 }}>
+          Built for African roads
         </h2>
-        <p style={{ font: '500 17px/1.8 var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>
-          DondaX is leading the movement towards a cleaner, smarter, and more affordable way to move. We are a proudly
-          Nigerian electric mobility company, focused on redefining transportation with cutting-edge electric
-          motorcycles designed for the streets and communities of Africa. We believe transportation should be more than
-          just movement — it should be empowering, sustainable, and accessible to everyone.
-        </p>
       </Reveal>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 28, marginBottom: 80 }}>
-        {[
-          {
-            title: 'Our Mission',
-            body: 'To reduce transportation costs, cut down harmful emissions, and create new economic opportunities through clean energy solutions. Every DondaX ride is not just a journey — it’s a statement of freedom, progress, and a greener future.',
-          },
-          {
-            title: 'Our Vision',
-            body: 'To revolutionize urban transportation in Africa by providing cutting-edge, eco-friendly electric motorcycles that combine performance, sustainability, and affordability. We’re committed to reducing carbon emissions while empowering communities through innovative mobility solutions.',
-          },
-        ].map((card, i) => (
-          <Reveal key={card.title} delay={i * 0.12} className="dx-card dx-card--glass dx-about-card" style={{ padding: 'clamp(24px,5vw,40px)' }}>
-            <h3 style={{ font: '700 24px var(--dx-sora)', margin: '0 0 16px', color: 'var(--dx-accent)' }}>{card.title}</h3>
-            <p style={{ font: '500 15px/1.75 var(--dx-manrope)', color: 'var(--dx-text-muted)' }}>{card.body}</p>
+      <div className="dx-m-cols" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 22 }}>
+        {WHY.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.08} style={{ borderTop: '2px solid var(--dx-accent)', paddingTop: 20 }}>
+            <div style={{ font: '700 17px var(--dx-sora)', marginBottom: 8 }}>{item.title}</div>
+            <div style={{ font: '500 14px/1.7 var(--dx-manrope)', color: 'oklch(68% 0.015 95)' }}>{item.body}</div>
           </Reveal>
         ))}
       </div>
-
-      <div className="dx-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 64, alignItems: 'center' }}>
-        <Reveal>
-          <h3 style={{ font: '700 clamp(28px,5vw,36px) var(--dx-sora)', margin: '0 0 32px' }}>
-            Building the <span className="dx-accent">Future</span>
-          </h3>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
-            {buildPoints.map((point, i) => (
-              <div key={point} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <span className="dx-pulse-dot" style={{ animationDelay: `${i * 0.4}s` }} />
-                <span style={{ font: '600 16px var(--dx-manrope)', color: 'oklch(88% 0.006 95)' }}>{point}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-        <Reveal delay={0.12} className="dx-media">
-          <img src={ASSET('gn-urban.webp')} srcSet={SRCSET('gn-urban')} sizes="(max-width: 720px) 100vw, 640px" loading="lazy" decoding="async" alt="DondaX electric motorcycle" style={{ width: '100%', height: 'clamp(220px,55vw,380px)', objectFit: 'cover' }} />
-          <div className="dx-shine" style={{ animationDelay: '2s' }} />
-        </Reveal>
-      </div>
     </div>
-  );
-}
-
-function CtaBanner() {
-  return (
-    <Reveal style={{ textAlign: 'center', padding: '80px 56px' }} className="dx-section">
-      <h3 style={{ font: '800 clamp(28px,3.4vw,42px) var(--dx-sora)', margin: '0 0 32px' }}>
-        Ready to Join the <span className="dx-accent">Electric</span> Revolution?
-      </h3>
-      <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-        <Link to="/products" className="dx-btn">Explore Products</Link>
-        <a href="#contact" className="dx-btn-outline">Contact Us</a>
-      </div>
-    </Reveal>
   );
 }
 
@@ -283,18 +205,16 @@ const SOCIALS = [
 
 function Contact() {
   return (
-    <div id="contact" style={{ ...SECTION, padding: '40px 56px 96px', scrollMarginTop: 20 }} className="dx-section">
-      <Reveal style={{ textAlign: 'center', marginBottom: 48 }}>
-        <div className="dx-eyebrow" style={{ marginBottom: 14 }}>Get in Touch</div>
-        <h2 style={{ font: '800 clamp(32px,4vw,48px) var(--dx-sora)' }}>
-          Contact <span className="dx-accent">Us</span>
-        </h2>
+    <div id="contact" className="dx-section" style={{ padding: '8px 48px 88px', scrollMarginTop: 20 }}>
+      <Reveal style={{ marginBottom: 40 }}>
+        <div className="dx-eyebrow" style={{ marginBottom: 12 }}>Get in Touch</div>
+        <h2 className="dx-m-fs-28" style={{ font: '800 38px var(--dx-sora)', letterSpacing: -0.5 }}>Contact us</h2>
       </Reveal>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(320px,100%),1fr))', gap: 28 }}>
-        <Reveal className="dx-card dx-card--glass" style={{ padding: 'clamp(20px,4vw,32px)' }}>
-          <h3 style={{ font: '700 20px var(--dx-sora)', margin: '0 0 20px' }}>Our Location</h3>
-          <div style={{ position: 'relative', width: '100%', height: 'clamp(260px,60vw,360px)', borderRadius: 14, overflow: 'hidden', border: '1px solid var(--dx-border)' }}>
+      <div className="dx-m-cols" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 24 }}>
+        <Reveal className="dx-card" style={{ padding: 28 }}>
+          <h3 style={{ font: '700 19px var(--dx-sora)', margin: '0 0 18px' }}>Our Location</h3>
+          <div style={{ position: 'relative', width: '100%', height: 340, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--dx-border)' }}>
             <iframe
               title="DondaX HQ — Gwarinpa, Abuja"
               src="https://www.openstreetmap.org/export/embed.html?bbox=7.385%2C9.085%2C7.455%2C9.145&layer=mapnik&marker=9.111%2C7.417"
@@ -319,7 +239,7 @@ function Contact() {
           ].map((item) => (
             <div
               key={item.label}
-              className="dx-card dx-card--glass dx-contact-card"
+              className="dx-card dx-contact-card"
               style={{ borderRadius: 16, padding: 24, display: 'flex', alignItems: 'center', gap: 18 }}
             >
               <span
@@ -332,7 +252,7 @@ function Contact() {
                 {item.icon}
               </span>
               <div>
-                <div style={{ font: '600 12px var(--dx-manrope)', color: 'var(--dx-text-muted)', marginBottom: 4 }}>{item.label}</div>
+                <div style={{ font: '600 12px var(--dx-manrope)', color: 'oklch(60% 0.015 95)', marginBottom: 4 }}>{item.label}</div>
                 {item.lines.map((l) => (
                   <div key={l} style={{ font: '600 15px var(--dx-manrope)', color: '#fff' }}>{l}</div>
                 ))}
@@ -348,7 +268,7 @@ function Contact() {
                 className="dx-social"
                 style={{
                   flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 9,
-                  background: 'var(--dx-surface-glass)', border: '1px solid rgba(255,255,255,.12)',
+                  background: 'var(--dx-surface)', border: '1px solid rgba(255,255,255,.12)',
                   borderRadius: 12, padding: 14, font: '700 13px var(--dx-manrope)', color: '#fff',
                 }}
               >
@@ -363,16 +283,30 @@ function Contact() {
   );
 }
 
+function CtaBanner() {
+  return (
+    <Reveal className="dx-m-cta" style={{ textAlign: 'center', padding: '0 48px 80px' }}>
+      <h3 className="dx-m-fs-26" style={{ font: '800 36px var(--dx-sora)', margin: '0 0 28px' }}>
+        Ready to ride <span className="dx-accent">electric</span>?
+      </h3>
+      <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Link to="/order" className="dx-btn">Place Order Request</Link>
+        <a href="#contact" className="dx-btn-outline">Contact Us</a>
+      </div>
+    </Reveal>
+  );
+}
+
 export default function Home() {
   return (
-    <DondaxLayout background hideNav>
+    <DondaxLayout active="/">
       <Hero />
-      <StatStrip />
-      <FeaturedModel />
+      <FloatingStats />
+      <Mission />
       <Colours />
-      <About />
-      <CtaBanner />
+      <WhyDondax />
       <Contact />
+      <CtaBanner />
     </DondaxLayout>
   );
 }
