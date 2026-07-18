@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
             </div>
             <hr className="my-2 sm:my-3 border-gray-300 dark:border-gray-500" />
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              <a href="https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">
+              <a href="https://www.instagram.com/dondaxltd?igsh=cGRpNXNicGU2aThr" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">
                 <FaInstagram className="text-base sm:text-lg shrink-0" /> <span className="hidden sm:inline">Instagram</span>
               </a>
               <a href="https://www.facebook.com/share/1JRYVsTagv/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-200 dark:bg-[#4a5757] rounded-md px-2 sm:px-3 py-2 text-gray-800 dark:text-white hover:bg-green/20 transition-colors text-xs sm:text-sm md:text-base">

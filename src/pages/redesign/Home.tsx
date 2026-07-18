@@ -175,7 +175,7 @@ function WhyDondax() {
 const SOCIALS = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr',
+    href: 'https://www.instagram.com/dondaxltd?igsh=cGRpNXNicGU2aThr',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <rect x="3" y="3" width="18" height="18" rx="5" />
