@@ -175,6 +175,7 @@ function WhyDondax() {
 const SOCIALS = [
   {
     label: 'Instagram',
+    href: 'https://www.instagram.com/dondaxlimited?igsh=cGRpNXNicGU2aThr',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -185,6 +186,7 @@ const SOCIALS = [
   },
   {
     label: 'Facebook',
+    href: 'https://www.facebook.com/share/1JRYVsTagv/',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <circle cx="12" cy="12" r="9.2" />
@@ -194,6 +196,7 @@ const SOCIALS = [
   },
   {
     label: 'TikTok',
+    href: 'https://www.tiktok.com/@dondaxltd?_r=1&_t=ZS-97gAPSB5Hld',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M14 4v9.6a3.4 3.4 0 1 1-2.6-3.3" />
@@ -233,37 +236,53 @@ function Contact() {
         </Reveal>
 
         <Reveal delay={0.12} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {[
-            { icon: '✉', label: 'Email', lines: ['care@dondaxlimited.com', 'enquiry@dondaxlimited.com'] },
-            { icon: '☎', label: 'Phone', lines: ['+86 132 6535 5246', '+234 803 7789 733'] },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="dx-card dx-contact-card"
-              style={{ borderRadius: 16, padding: 24, display: 'flex', alignItems: 'center', gap: 18 }}
+          {/* Email card */}
+          <div
+            className="dx-card dx-contact-card"
+            style={{ borderRadius: 16, padding: 24, display: 'flex', alignItems: 'center', gap: 18 }}
+          >
+            <span
+              style={{
+                width: 44, height: 44, flex: 'none', borderRadius: 12,
+                background: 'oklch(80% 0.19 128 / .12)', display: 'flex',
+                alignItems: 'center', justifyContent: 'center', fontSize: 20,
+              }}
             >
-              <span
-                style={{
-                  width: 44, height: 44, flex: 'none', borderRadius: 12,
-                  background: 'oklch(80% 0.19 128 / .12)', display: 'flex',
-                  alignItems: 'center', justifyContent: 'center', fontSize: 20,
-                }}
-              >
-                {item.icon}
-              </span>
-              <div>
-                <div style={{ font: '600 12px var(--dx-manrope)', color: 'oklch(60% 0.015 95)', marginBottom: 4 }}>{item.label}</div>
-                {item.lines.map((l) => (
-                  <div key={l} style={{ font: '600 15px var(--dx-manrope)', color: '#fff' }}>{l}</div>
-                ))}
-              </div>
+              ✉
+            </span>
+            <div>
+              <div style={{ font: '600 12px var(--dx-manrope)', color: 'oklch(60% 0.015 95)', marginBottom: 4 }}>Email</div>
+              <a href="mailto:care@dondaxlimited.com" style={{ display: 'block', font: '600 15px var(--dx-manrope)', color: '#fff', textDecoration: 'none' }} className="dx-contact-link">care@dondaxlimited.com</a>
+              <a href="mailto:enquiry@dondaxlimited.com" style={{ display: 'block', font: '600 15px var(--dx-manrope)', color: '#fff', textDecoration: 'none' }} className="dx-contact-link">enquiry@dondaxlimited.com</a>
             </div>
-          ))}
+          </div>
+          {/* Phone card */}
+          <div
+            className="dx-card dx-contact-card"
+            style={{ borderRadius: 16, padding: 24, display: 'flex', alignItems: 'center', gap: 18 }}
+          >
+            <span
+              style={{
+                width: 44, height: 44, flex: 'none', borderRadius: 12,
+                background: 'oklch(80% 0.19 128 / .12)', display: 'flex',
+                alignItems: 'center', justifyContent: 'center', fontSize: 20,
+              }}
+            >
+              ☎
+            </span>
+            <div>
+              <div style={{ font: '600 12px var(--dx-manrope)', color: 'oklch(60% 0.015 95)', marginBottom: 4 }}>Phone</div>
+              <a href="tel:+8613265355246" style={{ display: 'block', font: '600 15px var(--dx-manrope)', color: '#fff', textDecoration: 'none' }} className="dx-contact-link">+86 132 6535 5246</a>
+              <a href="tel:+2348037789733" style={{ display: 'block', font: '600 15px var(--dx-manrope)', color: '#fff', textDecoration: 'none' }} className="dx-contact-link">+234 803 7789 733</a>
+            </div>
+          </div>
           <div style={{ display: 'flex', gap: 12, marginTop: 4, flexWrap: 'wrap' }}>
             {SOCIALS.map((s) => (
               <a
                 key={s.label}
-                href="#"
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={s.label}
                 className="dx-social"
                 style={{

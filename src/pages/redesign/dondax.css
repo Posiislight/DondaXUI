@@ -240,7 +240,9 @@
 .dx-update-card:hover { transform: translateY(-6px); border-color: oklch(80% 0.19 128 / 0.5) !important; }
 .dx-contact-card { transition: border-color 0.3s; }
 .dx-contact-card:hover { border-color: oklch(80% 0.19 128 / 0.5); }
-.dx-social { transition: border-color 0.25s, transform 0.25s; }
+.dondax-root .dx-contact-link { transition: color 0.2s; }
+.dondax-root .dx-contact-link:hover { color: var(--dx-accent-hi) !important; text-decoration: underline; }
+.dx-social { transition: border-color 0.25s, transform 0.25s; text-decoration: none; }
 .dx-social:hover { border-color: var(--dx-accent); transform: translateY(-3px); color: #fff; }
 
 /* ---------- form inputs ---------- */
