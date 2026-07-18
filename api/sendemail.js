@@ -32,9 +32,16 @@ export default async function handler(req, res) {
       additional_features,
     } = req.body;
 
-    // Validate required fields
-    if (!first_name || !last_name || !email || !phone) {
-      return res.status(400).json({ error: "Missing required fields" });
+    // Validate required fields with specific messages
+    const missing = [];
+    if (!first_name) missing.push("First name is required");
+    if (!last_name) missing.push("Last name is required");
+    if (!email) missing.push("Email is required");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push("Please enter a valid email address");
+    if (!phone) missing.push("Phone number is required");
+
+    if (missing.length > 0) {
+      return res.status(400).json({ error: missing.join(". ") });
     }
 
     const features =
