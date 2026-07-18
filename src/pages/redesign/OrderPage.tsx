@@ -4,11 +4,58 @@ import { COLOURS } from './data';
 
 export default function OrderPage() {
   const [colour, setColour] = useState(COLOURS[0]);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const onSubmit = (e: FormEvent) => {
+  /* controlled form fields */
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus('sending');
+    setErrorMsg('');
+
+    /* split full name into first / last for the API */
+    const nameParts = fullName.trim().split(/\s+/);
+    const first_name = nameParts[0] || '';
+    const last_name = nameParts.slice(1).join(' ') || '';
+
+    try {
+      const res = await fetch('/api/sendemail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          first_name,
+          last_name,
+          email,
+          phone,
+          address,
+          city,
+          zip_code: state, // re-using state field for region/state
+          motorcycle_model: 'GN Model',
+          color: colour.name,
+          quantity: 1,
+          frequency: 'One-time',
+          additional_features: [],
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({ error: 'Request failed' }));
+        throw new Error(body.error || `Server responded with ${res.status}`);
+      }
+
+      setStatus('sent');
+    } catch (err: any) {
+      console.error('Order submission failed:', err);
+      setErrorMsg(err.message || 'Something went wrong. Please try again.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -23,9 +70,29 @@ export default function OrderPage() {
             <section>
               <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 18px' }}>Personal Information</h2>
               <div className="dx-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                <input required placeholder="Full Name" className="dx-input" style={{ gridColumn: 'span 2' }} />
-                <input required type="email" placeholder="Email" className="dx-input" />
-                <input required placeholder="Phone Number" className="dx-input" />
+                <input
+                  required
+                  placeholder="Full Name"
+                  className="dx-input"
+                  style={{ gridColumn: 'span 2' }}
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                />
+                <input
+                  required
+                  type="email"
+                  placeholder="Email"
+                  className="dx-input"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                  required
+                  placeholder="Phone Number"
+                  className="dx-input"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </div>
             </section>
 
@@ -58,9 +125,28 @@ export default function OrderPage() {
             <section>
               <h2 style={{ font: '700 18px var(--dx-sora)', margin: '0 0 18px' }}>Delivery Details</h2>
               <div className="dx-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                <input required placeholder="Delivery Address" className="dx-input" style={{ gridColumn: 'span 2' }} />
-                <input required placeholder="City" className="dx-input" />
-                <input required placeholder="State" className="dx-input" />
+                <input
+                  required
+                  placeholder="Delivery Address"
+                  className="dx-input"
+                  style={{ gridColumn: 'span 2' }}
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+                <input
+                  required
+                  placeholder="City"
+                  className="dx-input"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                  required
+                  placeholder="State"
+                  className="dx-input"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                />
               </div>
             </section>
           </div>
@@ -87,12 +173,28 @@ export default function OrderPage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', font: '800 18px var(--dx-sora)', marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(0,0,0,.08)' }}>
               <span>Total</span><span style={{ color: 'var(--dx-accent-deep)' }}>Quote on request</span>
             </div>
-            <button type="submit" className="dx-btn" style={{ display: 'flex', width: '100%', marginTop: 24, padding: 16 }}>
-              {submitted ? 'Request Received ✓' : 'Place Order'}
+            <button
+              type="submit"
+              className="dx-btn"
+              disabled={status === 'sending' || status === 'sent'}
+              style={{
+                display: 'flex', width: '100%', marginTop: 24, padding: 16,
+                opacity: status === 'sending' ? 0.7 : 1,
+                cursor: status === 'sent' ? 'default' : undefined,
+              }}
+            >
+              {status === 'sending' && 'Sending…'}
+              {status === 'sent' && 'Request Received ✓'}
+              {(status === 'idle' || status === 'error') && 'Place Order'}
             </button>
-            {submitted && (
+            {status === 'sent' && (
               <p style={{ font: '500 13px/1.5 var(--dx-manrope)', color: 'var(--dx-light-muted)', marginTop: 14, textAlign: 'center' }}>
                 Thanks — our team will reach out with a quote shortly.
+              </p>
+            )}
+            {status === 'error' && (
+              <p style={{ font: '500 13px/1.5 var(--dx-manrope)', color: '#e55', marginTop: 14, textAlign: 'center' }}>
+                {errorMsg}
               </p>
             )}
           </aside>
