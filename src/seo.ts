@@ -2,7 +2,7 @@
 // Rendered into <head> by components/Seo.tsx.
 import { COLOURS, SPECS } from './pages/redesign/data';
 
-export const SITE_URL = 'https://www.dondax.com';
+export const SITE_URL = 'https://www.dondaxlimited.com';
 
 export const absoluteUrl = (path: string) => SITE_URL + path;
 
